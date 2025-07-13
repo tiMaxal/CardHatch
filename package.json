@@ -1,0 +1,21 @@
+{
+  "name": "cardhatch",
+  "version": "0.1.0",
+  "description": "A tool for creating flashcards from CSV files.",
+  "main": "CardHatch.py",
+  "scripts": {
+    "start": "python CardHatch.py",
+    "changeset": "changeset",
+    "version-packages": "changeset version"
+  },
+  "keywords": [
+    "flashcards",
+    "csv",
+    "pdf"
+  ],
+  "author": "tiMaxal",
+  "license": "MIT",
+  "devDependencies": {
+    "@changesets/cli": "^2.29.5"
+  }
+}
