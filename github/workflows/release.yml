@@ -1,0 +1,22 @@
+name: Version Packages
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - run: npm ci
+      - run: npx changeset version
+      - run: git config user.name "github-actions[bot]"
+      - run: git config user.email "github-actions[bot]@users.noreply.github.com"
+      - run: git add .
+      - run: git commit -m "Version Packages" || echo "No changes to commit"
+      - run: git push

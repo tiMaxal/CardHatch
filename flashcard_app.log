@@ -1,17 +1,6 @@
-2025-07-13 15:44:51,072 - INFO - Loading settings from flashcard_gui_settings.json
-2025-07-13 15:44:51,072 - ERROR - Failed to load settings: Invalid \escape: line 2 column 21 (char 22)
-2025-07-13 15:44:51,073 - INFO - Starting Flashcard PDF Generator application
-2025-07-13 15:44:51,344 - INFO - Initializing FlashcardApp GUI
-2025-07-13 15:44:51,352 - INFO - GUI initialization complete
-2025-07-13 15:58:54,740 - INFO - Loading settings from flashcard_gui_settings.json
-2025-07-13 15:58:54,740 - INFO - Settings loaded successfully
-2025-07-13 15:58:54,740 - INFO - Starting Flashcard PDF Generator application
-2025-07-13 15:58:54,773 - INFO - Initializing FlashcardApp GUI
-2025-07-13 15:58:54,779 - INFO - GUI initialization complete
-2025-07-13 15:59:06,792 - INFO - Application closed
-2025-07-13 16:02:11,396 - INFO - Loading settings from flashcard_gui_settings.json
-2025-07-13 16:02:11,396 - INFO - Settings loaded successfully
-2025-07-13 16:02:11,396 - INFO - Starting Flashcard PDF Generator application
-2025-07-13 16:02:11,427 - INFO - Initializing FlashcardApp GUI
-2025-07-13 16:02:11,433 - INFO - GUI initialization complete
-2025-07-13 16:02:22,781 - INFO - Application closed
+2025-07-13 16:44:10,828 - INFO - Loading settings from flashcard_gui_settings.json
+2025-07-13 16:44:10,828 - INFO - Settings file not found, using default settings
+2025-07-13 16:44:10,829 - INFO - Starting Flashcard PDF Generator application
+2025-07-13 16:44:10,860 - INFO - Initializing FlashcardApp GUI
+2025-07-13 16:44:10,866 - INFO - GUI initialization complete
+2025-07-13 16:44:24,828 - INFO - Application closed
