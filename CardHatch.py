@@ -67,6 +67,13 @@ provide the complete code, incl full docstrings,
 remove all controls and references to 'index' and 'notes' columns
 provide complete code, with full logging to file and docstrings
 
+20250711
+
+ also function with .ods files
+csv, excel and ods types all be shown at the same time in the picker,
+ instead of needing to use a drop-down
+  [and just show 'all' in the drop-down as well]
+
 """
 
 """
@@ -79,20 +86,21 @@ pip install pandas reportlab openpyxl
 """
 Flashcard PDF Generator
 
-This script creates a Tkinter-based GUI application that generates a double-sided flashcard PDF from an Excel or CSV file.
-The application allows users to specify the input file, column names for front and back content, card layout, page size, margins,
-color bars, flip mode for duplex printing, font size, font family, font style, and text color. Cards are centered on the page both
-horizontally and vertically, with text centered within each card both horizontally and vertically. Front and back pages are aligned
-for duplex printing based on the selected flip mode (long or short edge). Settings are saved to a JSON file for persistence.
-Comprehensive logging is implemented to track all stages of the process, with logs written to both console and a file in the current
-working directory.
+This script creates a Tkinter-based GUI application that generates a double-sided flashcard PDF from a CSV, Excel, or ODS file.
+The application allows users to select an input file (showing CSV, Excel, and ODS files simultaneously by default), specify column
+names for front and back content, card layout, page size, margins, color bars, flip mode for duplex printing, font size, font family,
+font style, and text color. Cards are centered on the page both horizontally and vertically, with text centered within each card both
+horizontally and vertically. Front and back pages are aligned for duplex printing based on the selected flip mode (long or short edge).
+Settings are saved to a JSON file for persistence. Comprehensive logging is implemented to track all stages of the process, with logs
+written to both console and a file in the current working directory.
 
 Dependencies:
 - pandas
 - reportlab
 - openpyxl
+- odfpy
 
-Install requirements: pip install pandas reportlab openpyxl
+Install requirements: pip install pandas reportlab openpyxl odfpy
 """
 
 import tkinter as tk
@@ -115,7 +123,7 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
         logging.StreamHandler(),  # Console output
-        logging.FileHandler("flashcard_app.log"),  # File output in cwd
+        logging.FileHandler("cardhatch.log"),  # File output in cwd
     ],
 )
 logger = logging.getLogger(__name__)
@@ -144,7 +152,7 @@ DEFAULT_SETTINGS = {
     "text_color": "#000000",
 }
 
-SETTINGS_FILE = "flashcard_gui_settings.json"
+SETTINGS_FILE = "cardhatch_settings.json"
 
 
 def load_settings():
@@ -310,11 +318,11 @@ class FlashcardApp(tk.Tk):
     """
     Tkinter GUI application for generating printable, double-sided flashcard PDFs from spreadsheet data.
 
-    The application provides fields for input file selection, column names for front and back content, card layout,
-    page size, margins, color bars, flip mode, font size, font family, font style, and text color. Cards are centered
-    on the page, and text within each card is centered both horizontally and vertically. Front/back pages are aligned
-    for duplex printing based on the flip mode. Settings are saved to a JSON file for persistence. Logging tracks all
-    user interactions and processing steps.
+    The application provides fields for input file selection (showing CSV, Excel, and ODS files simultaneously by default),
+    column names for front and back content, card layout, page size, margins, color bars, flip mode, font size, font family,
+    font style, and text color. Cards are centered on the page, and text within each card is centered both horizontally and
+    vertically. Front/back pages are aligned for duplex printing based on the flip mode. Settings are saved to a JSON file
+    for persistence. Logging tracks all user interactions and processing steps.
     """
 
     def __init__(self):
@@ -322,13 +330,13 @@ class FlashcardApp(tk.Tk):
         super().__init__()
         logger.info("Initializing FlashcardApp GUI")
         self.title("Flashcard PDF Generator")
-        self.geometry("750x550")  # Reduced height due to removed fields
+        self.geometry("750x550")  # Height adjusted for removed index/notes fields
 
         frame_main = tk.Frame(self)
         frame_main.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
         # File selection
-        tk.Label(frame_main, text="Excel/CSV File Path:").grid(
+        tk.Label(frame_main, text="CSV/Excel/ODS File Path:").grid(
             row=0, column=0, sticky=tk.W
         )
         self.entry_file = tk.Entry(frame_main)
@@ -525,14 +533,10 @@ class FlashcardApp(tk.Tk):
         logger.info("GUI initialization complete")
 
     def browse_file(self):
-        """Open a file dialog to select the input Excel or CSV file."""
+        """Open a file dialog to select the input CSV, Excel, or ODS file, showing all supported spreadsheet formats by default."""
         logger.info("Opening file dialog for input file selection")
         file_path = filedialog.askopenfilename(
-            filetypes=[
-                ("Excel files", "*.xlsx;*.xls"),
-                ("CSV files", "*.csv"),
-                ("All files", "*"),
-            ]
+            filetypes=[("Spreadsheets", "*.csv;*.xlsx;*.xls;*.ods"), ("All files", "*")]
         )
         if file_path:
             logger.info(f"Selected input file: {file_path}")
@@ -595,8 +599,9 @@ class FlashcardApp(tk.Tk):
         """
         Validate inputs, save settings, load data, and generate the PDF.
 
-        Saves current GUI inputs to settings, reads the input file, validates columns,
-        and calls the PDF generation function. Displays error messages via GUI if issues occur.
+        Saves current GUI inputs to settings, reads the input file (CSV, Excel, or ODS),
+        validates columns, and calls the PDF generation function. Displays error messages
+        via GUI if issues occur.
         """
         logger.info("Starting PDF generation process")
         # Save current settings
@@ -644,8 +649,16 @@ class FlashcardApp(tk.Tk):
         try:
             if file_path.lower().endswith(".csv"):
                 data = pd.read_csv(file_path)
+            elif file_path.lower().endswith((".xlsx", ".xls")):
+                data = pd.read_excel(file_path, engine="openpyxl")
+            elif file_path.lower().endswith(".ods"):
+                data = pd.read_excel(file_path, engine="odf")
             else:
-                data = pd.read_excel(file_path)
+                logger.error("Unsupported file format. Please use CSV, Excel, or ODS.")
+                messagebox.showerror(
+                    "Error", "Unsupported file format. Please use CSV, Excel, or ODS."
+                )
+                return
             logger.info(f"Successfully read {len(data)} rows from input file")
         except Exception as e:
             logger.error(f"Failed to read file: {e}")

@@ -1,5 +1,11 @@
 # cardhatch
 
+## 0.4.0
+
+### Minor Changes
+
+- add ods format, show all in filepicker
+
 ## 0.3.0
 
 ### Minor Changes

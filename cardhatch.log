@@ -120,3 +120,32 @@
 2025-07-13 16:44:30,338 - INFO - Initializing FlashcardApp GUI
 2025-07-13 16:44:30,344 - INFO - GUI initialization complete
 2025-07-13 16:44:33,866 - INFO - Application closed
+2025-07-13 17:15:56,781 - INFO - Loading settings from cardhatch_settings.json
+2025-07-13 17:15:56,781 - INFO - Settings loaded successfully
+2025-07-13 17:15:56,781 - INFO - Starting Flashcard PDF Generator application
+2025-07-13 17:15:56,814 - INFO - Initializing FlashcardApp GUI
+2025-07-13 17:15:56,822 - INFO - GUI initialization complete
+2025-07-13 17:16:07,425 - INFO - Application closed
+2025-07-13 17:16:11,486 - INFO - Loading settings from cardhatch_settings.json
+2025-07-13 17:16:11,486 - INFO - Settings loaded successfully
+2025-07-13 17:16:11,486 - INFO - Starting Flashcard PDF Generator application
+2025-07-13 17:16:11,517 - INFO - Initializing FlashcardApp GUI
+2025-07-13 17:16:11,522 - INFO - GUI initialization complete
+2025-07-13 17:16:18,815 - INFO - Starting PDF generation process
+2025-07-13 17:16:18,816 - INFO - Settings saved to cardhatch_settings.json
+2025-07-13 17:16:18,816 - INFO - Reading input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.xlsx
+2025-07-13 17:16:18,986 - INFO - Successfully read 3 rows from input file
+2025-07-13 17:16:18,986 - INFO - Starting PDF generation
+2025-07-13 17:16:18,986 - INFO - Using font: Courier with size 12.0
+2025-07-13 17:16:18,986 - INFO - Calculated grid: 2x5, offsets: 19.400000000000006mm, 11.0mm
+2025-07-13 17:16:18,987 - INFO - Creating PDF at: E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.helvetica.long.cardhatch.0-3-0.pdf
+2025-07-13 17:16:18,987 - INFO - Generating 1 pages for 3 cards, flip_mode=long
+2025-07-13 17:16:18,989 - INFO - PDF saved successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.helvetica.long.cardhatch.0-3-0.pdf
+2025-07-13 17:16:18,989 - INFO - PDF generated successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.helvetica.long.cardhatch.0-3-0.pdf
+2025-07-13 17:16:22,446 - INFO - Application closed
+2025-07-13 17:16:46,207 - INFO - Loading settings from cardhatch_settings.json
+2025-07-13 17:16:46,213 - INFO - Settings loaded successfully
+2025-07-13 17:16:46,213 - INFO - Starting Flashcard PDF Generator application
+2025-07-13 17:16:46,243 - INFO - Initializing FlashcardApp GUI
+2025-07-13 17:16:46,249 - INFO - GUI initialization complete
+2025-07-13 17:17:06,321 - INFO - Application closed
