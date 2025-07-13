@@ -1,5 +1,7 @@
 # Flashcard PDF Generator – README
 
+Hatch your own Business or Flash Cards
+
 ## Overview
 
 This application allows to create printable PDF flashcards (business card size) from two columns in an Excel or CSV file. Each card has a front and back, with options for color-coded bars, index, notes, and more. The app features a graphical user interface (GUI) for easy configuration and saves settings for future use.
@@ -22,12 +24,12 @@ This application allows to create printable PDF flashcards (business card size) 
 1. **Install Python 3** (if not already installed).
 2. **Install required packages** by running:
 `pip install pandas reportlab openpyxl`
-3. **Save the script** (`cardset.py`) to your computer.
+3. **Save the script** (`CardHatch.py`) to your computer.
 
 ## Usage
 
 1. **Run the app:**
-`python cardset.py`
+`python CardHatch.py`
 2. **In the GUI:**
 - Select your Excel/CSV file.
 - Choose the output PDF location.
