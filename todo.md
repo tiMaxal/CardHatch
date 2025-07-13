@@ -5,3 +5,5 @@
     - save in csv format
     - [later, other formats?]
     - 'cancel' and 'save' buttons 
+
+- option to have text orientated left, central or right
