@@ -74,6 +74,9 @@ csv, excel and ods types all be shown at the same time in the picker,
  instead of needing to use a drop-down
   [and just show 'all' in the drop-down as well]
 
+include a `Various amounts from 'qty' col` checkbox
+ to apply diff quantity to certain cards [via column 'qty'],
+   and a `Multiple` value input box to multiply *all* cards by a same amount
 """
 
 """
@@ -89,10 +92,11 @@ Flashcard PDF Generator
 This script creates a Tkinter-based GUI application that generates a double-sided flashcard PDF from a CSV, Excel, or ODS file.
 The application allows users to select an input file (showing CSV, Excel, and ODS files simultaneously by default), specify column
 names for front and back content, card layout, page size, margins, color bars, flip mode for duplex printing, font size, font family,
-font style, and text color. Cards are centered on the page both horizontally and vertically, with text centered within each card both
-horizontally and vertically. Front and back pages are aligned for duplex printing based on the selected flip mode (long or short edge).
-Settings are saved to a JSON file for persistence. Comprehensive logging is implemented to track all stages of the process, with logs
-written to both console and a file in the current working directory.
+font style, and text color. Users can also specify variable card quantities via a 'qty' column and a global quantity multiplier.
+Cards are centered on the page both horizontally and vertically, with text centered within each card both horizontally and vertically.
+Front and back pages are aligned for duplex printing based on the selected flip mode (long or short edge). Settings are saved to a JSON
+file for persistence. Comprehensive logging tracks all stages of the process, with logs written to both console and a file in the
+current working directory.
 
 Dependencies:
 - pandas
@@ -150,6 +154,8 @@ DEFAULT_SETTINGS = {
     "font_family": "Helvetica",
     "font_style": "Normal",
     "text_color": "#000000",
+    "use_qty_column": False,
+    "quantity_multiplier": 1,
 }
 
 SETTINGS_FILE = "cardhatch_settings.json"
@@ -320,9 +326,10 @@ class FlashcardApp(tk.Tk):
 
     The application provides fields for input file selection (showing CSV, Excel, and ODS files simultaneously by default),
     column names for front and back content, card layout, page size, margins, color bars, flip mode, font size, font family,
-    font style, and text color. Cards are centered on the page, and text within each card is centered both horizontally and
-    vertically. Front/back pages are aligned for duplex printing based on the flip mode. Settings are saved to a JSON file
-    for persistence. Logging tracks all user interactions and processing steps.
+    font style, text color, variable quantities via a 'qty' column, and a global quantity multiplier. Cards are centered on
+    the page, and text within each card is centered both horizontally and vertically. Front/back pages are aligned for duplex
+    printing based on the flip mode. Settings are saved to a JSON file for persistence. Logging tracks all user interactions
+    and processing steps.
     """
 
     def __init__(self):
@@ -330,7 +337,7 @@ class FlashcardApp(tk.Tk):
         super().__init__()
         logger.info("Initializing FlashcardApp GUI")
         self.title("Flashcard PDF Generator")
-        self.geometry("750x550")  # Height adjusted for removed index/notes fields
+        self.geometry("750x580")  # Adjusted for new fields
 
         frame_main = tk.Frame(self)
         frame_main.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
@@ -496,21 +503,40 @@ class FlashcardApp(tk.Tk):
             frame_main, text="Truncate overflow text", variable=self.truncate_var
         ).grid(row=15, column=0, sticky=tk.W)
 
+        # Quantity settings
+        self.use_qty_column_var = tk.BooleanVar(
+            value=settings.get("use_qty_column", False)
+        )
+        tk.Checkbutton(
+            frame_main,
+            text="Various amounts from 'qty' col",
+            variable=self.use_qty_column_var,
+        ).grid(row=16, column=0, sticky=tk.W)
+
+        tk.Label(frame_main, text="Multiple (all cards):").grid(
+            row=17, column=0, sticky=tk.W
+        )
+        self.entry_quantity_multiplier = tk.Entry(frame_main)
+        self.entry_quantity_multiplier.grid(row=17, column=1, sticky=tk.EW)
+        self.entry_quantity_multiplier.insert(
+            0, str(settings.get("quantity_multiplier", 1))
+        )
+
         # Flip mode
         self.flip_mode_var = tk.StringVar(value=settings.get("flip_mode", "long"))
-        tk.Label(frame_main, text="Flip Mode:").grid(row=16, column=0, sticky=tk.W)
+        tk.Label(frame_main, text="Flip Mode:").grid(row=18, column=0, sticky=tk.W)
         tk.Radiobutton(
             frame_main,
             text="Flip on Long Edge",
             variable=self.flip_mode_var,
             value="long",
-        ).grid(row=16, column=1, sticky=tk.W)
+        ).grid(row=18, column=1, sticky=tk.W)
         tk.Radiobutton(
             frame_main,
             text="Flip on Short Edge",
             variable=self.flip_mode_var,
             value="short",
-        ).grid(row=16, column=2, sticky=tk.W)
+        ).grid(row=18, column=2, sticky=tk.W)
 
         frame_main.columnconfigure(0, weight=0)
         frame_main.columnconfigure(1, weight=1)
@@ -597,11 +623,11 @@ class FlashcardApp(tk.Tk):
 
     def start_process(self):
         """
-        Validate inputs, save settings, load data, and generate the PDF.
+        Validate inputs, save settings, load data, validate 'qty' column if used, and generate the PDF.
 
-        Saves current GUI inputs to settings, reads the input file (CSV, Excel, or ODS),
-        validates columns, and calls the PDF generation function. Displays error messages
-        via GUI if issues occur.
+        Saves current GUI inputs to settings, reads the input file (CSV, Excel, or ODS), validates columns
+        (including 'qty' if enabled), and calls the PDF generation function. Displays error messages via GUI
+        if issues occur.
         """
         logger.info("Starting PDF generation process")
         # Save current settings
@@ -609,6 +635,7 @@ class FlashcardApp(tk.Tk):
         settings["output_file"] = self.entry_output.get()
         settings["front_column"] = self.entry_front.get()
         settings["back_column"] = self.entry_back.get()
+        settings["use_qty_column"] = self.use_qty_column_var.get()
         try:
             settings["cards_per_row"] = int(self.entry_cards_per_row.get())
             settings["card_width"] = float(self.entry_card_width.get())
@@ -616,6 +643,11 @@ class FlashcardApp(tk.Tk):
             settings["page_size"] = self.entry_page_size.get()
             settings["margins"] = self.entry_margins.get()
             settings["font_size"] = float(self.entry_font_size.get())
+            settings["quantity_multiplier"] = int(
+                self.entry_quantity_multiplier.get() or 1
+            )
+            if settings["quantity_multiplier"] <= 0:
+                raise ValueError("Quantity multiplier must be a positive integer")
         except ValueError as e:
             logger.error(f"Invalid input in numeric fields: {e}")
             messagebox.showerror("Error", f"Invalid input in numeric fields: {e}")
@@ -670,12 +702,42 @@ class FlashcardApp(tk.Tk):
         for col in [settings["front_column"], settings["back_column"]]:
             if col not in data.columns:
                 missing.append(col)
+        if settings["use_qty_column"] and "qty" not in data.columns:
+            missing.append("qty")
         if missing:
             logger.error(f"Missing columns in data: {', '.join(missing)}")
             messagebox.showerror(
                 "Error", f"Missing columns in data: {', '.join(missing)}"
             )
             return
+
+        # Validate qty column values if used
+        if settings["use_qty_column"]:
+            try:
+                qty_values = pd.to_numeric(data["qty"], errors="coerce")
+                if qty_values.isna().any():
+                    logger.error("Non-numeric values found in 'qty' column")
+                    messagebox.showerror(
+                        "Error", "All values in 'qty' column must be numeric"
+                    )
+                    return
+                if not qty_values.apply(float.is_integer).all():
+                    logger.error("Non-integer values found in 'qty' column")
+                    messagebox.showerror(
+                        "Error", "All values in 'qty' column must be integers"
+                    )
+                    return
+                if (qty_values <= 0).any():
+                    logger.error("Non-positive values found in 'qty' column")
+                    messagebox.showerror(
+                        "Error", "All values in 'qty' column must be positive"
+                    )
+                    return
+                logger.info("Validated 'qty' column successfully")
+            except Exception as e:
+                logger.error(f"Error validating 'qty' column: {e}")
+                messagebox.showerror("Error", f"Error validating 'qty' column: {e}")
+                return
 
         try:
             self.generate_flashcard_pdf(data, settings)
@@ -691,15 +753,15 @@ class FlashcardApp(tk.Tk):
 
     def generate_flashcard_pdf(self, data, settings):
         """
-        Generate a flashcard PDF with alternating front/back pages, centered on the page.
+        Generate a flashcard PDF with alternating front/back pages, centered on the page, with variable quantities.
 
-        Cards are arranged in a grid, centered both horizontally and vertically on the page.
-        Text within each card is centered both horizontally and vertically. Front and back pages
-        are aligned for duplex printing based on the flip mode. Includes optional color bars
-        and supports customizable font size, family, style, and text color.
+        Cards are arranged in a grid, centered both horizontally and vertically on the page. Text within each card
+        is centered both horizontally and vertically. Front and back pages are aligned for duplex printing based on
+        the flip mode. Includes optional color bars and supports customizable font size, family, style, text color,
+        and variable card quantities via a 'qty' column and/or a global multiplier.
 
         Args:
-            data (pandas.DataFrame): Input data with front/back columns.
+            data (pandas.DataFrame): Input data with front/back columns and optional 'qty' column.
             settings (dict): Configuration settings for PDF generation.
 
         Raises:
@@ -723,6 +785,8 @@ class FlashcardApp(tk.Tk):
         font_family = settings["font_family"]
         font_style = settings["font_style"]
         text_color = settings["text_color"]
+        use_qty_column = settings["use_qty_column"]
+        quantity_multiplier = int(settings["quantity_multiplier"])
 
         # Map font style to ReportLab font name
         font_map = {
@@ -783,7 +847,17 @@ class FlashcardApp(tk.Tk):
         # Font settings
         line_height = font_size * 1.2
 
-        num_cards = len(data)
+        # Generate card indices based on quantities
+        card_indices = []
+        for idx in range(len(data)):
+            qty = int(data["qty"].iloc[idx]) if use_qty_column else 1
+            qty = qty * quantity_multiplier
+            card_indices.extend([idx] * qty)
+        num_cards = len(card_indices)
+        logger.info(
+            f"Total cards to print: {num_cards} (use_qty_column={use_qty_column}, multiplier={quantity_multiplier})"
+        )
+
         num_pages = math.ceil(num_cards / cards_per_page)
         flip_mode = settings.get("flip_mode", "long")
         logger.info(
@@ -800,7 +874,7 @@ class FlashcardApp(tk.Tk):
             # --- Front page ---
             page_start = page * cards_per_page
             page_end = min(page_start + cards_per_page, num_cards)
-            page_indices = list(range(page_start, page_end))
+            page_indices = card_indices[page_start:page_end]
             # Pad with None if last page is not full
             while len(page_indices) < cards_per_page:
                 page_indices.append(None)

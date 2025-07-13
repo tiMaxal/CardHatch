@@ -9,15 +9,17 @@
     "margins": "10,10,10,10",
     "color_bar_top": true,
     "color_bar_bottom": false,
-    "color_bar_top_color": "#0000ff",
-    "color_bar_bottom_color": "#eb0214",
-    "output_file": "E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.helvetica.long.cardhatch.0-3-0.pdf",
+    "color_bar_top_color": "#c4947d",
+    "color_bar_bottom_color": "#c8799c",
+    "output_file": "E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.courieritalic.long.mult2.cardhatch.0-5-0.pdf",
     "truncate": false,
     "card_width": 85.6,
     "card_height": 55.0,
     "font_size": 12.0,
     "flip_mode": "long",
     "font_family": "Courier",
-    "font_style": "Normal",
-    "text_color": "#000000"
+    "font_style": "Italic",
+    "text_color": "#0000ff",
+    "use_qty_column": false,
+    "quantity_multiplier": 2
 }

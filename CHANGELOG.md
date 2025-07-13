@@ -1,5 +1,11 @@
 # cardhatch
 
+## 0.5.0
+
+### Minor Changes
+
+- add qty + multiple
+
 ## 0.4.0
 
 ### Minor Changes

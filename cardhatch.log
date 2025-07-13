@@ -149,3 +149,32 @@
 2025-07-13 17:16:46,243 - INFO - Initializing FlashcardApp GUI
 2025-07-13 17:16:46,249 - INFO - GUI initialization complete
 2025-07-13 17:17:06,321 - INFO - Application closed
+2025-07-14 08:18:04,852 - INFO - Loading settings from cardhatch_settings.json
+2025-07-14 08:18:04,860 - INFO - Settings loaded successfully
+2025-07-14 08:18:04,860 - INFO - Starting Flashcard PDF Generator application
+2025-07-14 08:18:04,915 - INFO - Initializing FlashcardApp GUI
+2025-07-14 08:18:04,923 - INFO - GUI initialization complete
+2025-07-14 08:18:27,663 - INFO - Opening color picker for top bar
+2025-07-14 08:18:31,794 - INFO - Selected top bar color: #c4947d
+2025-07-14 08:18:38,233 - INFO - Opening color picker for bottom bar
+2025-07-14 08:18:41,198 - INFO - Selected bottom bar color: #c8799c
+2025-07-14 08:18:43,349 - INFO - Opening color picker for text color
+2025-07-14 08:18:46,519 - INFO - Selected text color: #0000ff
+2025-07-14 08:19:55,809 - INFO - Starting PDF generation process
+2025-07-14 08:19:55,810 - INFO - Settings saved to cardhatch_settings.json
+2025-07-14 08:19:55,811 - INFO - Reading input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.xlsx
+2025-07-14 08:19:56,126 - INFO - Successfully read 3 rows from input file
+2025-07-14 08:19:56,129 - ERROR - Non-numeric values found in 'qty' column
+2025-07-14 08:20:12,185 - INFO - Starting PDF generation process
+2025-07-14 08:20:12,186 - INFO - Settings saved to cardhatch_settings.json
+2025-07-14 08:20:12,186 - INFO - Reading input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.xlsx
+2025-07-14 08:20:12,190 - INFO - Successfully read 3 rows from input file
+2025-07-14 08:20:12,190 - INFO - Starting PDF generation
+2025-07-14 08:20:12,191 - INFO - Using font: Courier-Oblique with size 12.0
+2025-07-14 08:20:12,191 - INFO - Calculated grid: 2x5, offsets: 19.400000000000006mm, 11.0mm
+2025-07-14 08:20:12,191 - INFO - Creating PDF at: E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.courieritalic.long.mult2.cardhatch.0-5-0.pdf
+2025-07-14 08:20:12,191 - INFO - Total cards to print: 6 (use_qty_column=False, multiplier=2)
+2025-07-14 08:20:12,191 - INFO - Generating 1 pages for 6 cards, flip_mode=long
+2025-07-14 08:20:12,195 - INFO - PDF saved successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.courieritalic.long.mult2.cardhatch.0-5-0.pdf
+2025-07-14 08:20:12,195 - INFO - PDF generated successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.courieritalic.long.mult2.cardhatch.0-5-0.pdf
+2025-07-14 08:20:17,301 - INFO - Application closed
