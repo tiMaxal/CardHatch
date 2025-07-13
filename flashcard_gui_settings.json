@@ -1,0 +1,16 @@
+{
+    "file_path": "E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/cardset/test.plain-csv.csv",
+    "front_column": "Front",
+    "back_column": "Back",
+    "index_column": "Index",
+    "notes_column": "Notes",
+    "cards_per_row": 2,
+    "page_size": "210x297",
+    "margins": "10,10,10,10",
+    "color_bar_top": true,
+    "color_bar_bottom": false,
+    "color_bar_top_color": "#FF0000",
+    "color_bar_bottom_color": "#0000FF",
+    "output_file": "E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/cardset/test.plain-csv.0-1.pdf",
+    "truncate": false
+}
