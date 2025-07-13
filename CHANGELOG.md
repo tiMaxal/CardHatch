@@ -1,5 +1,11 @@
 # cardhatch
 
+## 0.3.0
+
+### Minor Changes
+
+- ea3a49e: remove all controls and references to 'index' and 'notes' columns
+
 ## 0.2.0
 
 ### Minor Changes
