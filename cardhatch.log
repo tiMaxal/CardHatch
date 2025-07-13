@@ -1,0 +1,116 @@
+2025-07-13 16:15:22,905 - INFO - Loading settings from cardhatch_settings.json
+2025-07-13 16:15:22,905 - INFO - Settings file not found, using default settings
+2025-07-13 16:15:22,905 - INFO - Starting Flashcard PDF Generator application
+2025-07-13 16:15:22,936 - INFO - Initializing FlashcardApp GUI
+2025-07-13 16:15:22,942 - INFO - GUI initialization complete
+2025-07-13 16:15:30,053 - INFO - Application closed
+2025-07-13 16:15:49,777 - INFO - Loading settings from cardhatch_settings.json
+2025-07-13 16:15:49,777 - INFO - Settings file not found, using default settings
+2025-07-13 16:15:49,777 - INFO - Starting Flashcard PDF Generator application
+2025-07-13 16:15:49,811 - INFO - Initializing FlashcardApp GUI
+2025-07-13 16:15:49,819 - INFO - GUI initialization complete
+2025-07-13 16:15:51,507 - INFO - Opening file dialog for input file selection
+2025-07-13 16:16:04,881 - INFO - Selected input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-csv.xlsx
+2025-07-13 16:16:04,882 - INFO - Set default output file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-csv.pdf
+2025-07-13 16:16:11,117 - INFO - Application closed
+2025-07-13 16:16:33,288 - INFO - Loading settings from cardhatch_settings.json
+2025-07-13 16:16:33,288 - INFO - Settings file not found, using default settings
+2025-07-13 16:16:33,289 - INFO - Starting Flashcard PDF Generator application
+2025-07-13 16:16:33,321 - INFO - Initializing FlashcardApp GUI
+2025-07-13 16:16:33,328 - INFO - GUI initialization complete
+2025-07-13 16:16:35,971 - INFO - Application closed
+2025-07-13 16:17:34,870 - INFO - Loading settings from cardhatch_settings.json
+2025-07-13 16:17:34,871 - INFO - Settings loaded successfully
+2025-07-13 16:17:34,871 - INFO - Starting Flashcard PDF Generator application
+2025-07-13 16:17:34,903 - INFO - Initializing FlashcardApp GUI
+2025-07-13 16:17:34,910 - INFO - GUI initialization complete
+2025-07-13 16:17:51,266 - INFO - Opening file dialog for input file selection
+2025-07-13 16:17:53,896 - INFO - Selected input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-csv.xlsx
+2025-07-13 16:17:53,897 - INFO - Set default output file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-csv.pdf
+2025-07-13 16:17:56,466 - INFO - Application closed
+2025-07-13 16:18:09,588 - INFO - Loading settings from cardhatch_settings.json
+2025-07-13 16:18:09,589 - INFO - Settings loaded successfully
+2025-07-13 16:18:09,589 - INFO - Starting Flashcard PDF Generator application
+2025-07-13 16:18:09,620 - INFO - Initializing FlashcardApp GUI
+2025-07-13 16:18:09,627 - INFO - GUI initialization complete
+2025-07-13 16:18:13,261 - INFO - Opening file dialog for input file selection
+2025-07-13 16:18:17,490 - INFO - Selected input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-csv.xlsx
+2025-07-13 16:18:17,491 - INFO - Set default output file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-csv.pdf
+2025-07-13 16:19:11,208 - INFO - Opening color picker for top bar
+2025-07-13 16:19:15,062 - INFO - Selected top bar color: #00ff00
+2025-07-13 16:19:26,266 - INFO - Starting PDF generation process
+2025-07-13 16:19:26,267 - INFO - Settings saved to cardhatch_settings.json
+2025-07-13 16:19:26,267 - INFO - Reading input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-csv.xlsx
+2025-07-13 16:19:26,504 - INFO - Successfully read 3 rows from input file
+2025-07-13 16:19:26,506 - INFO - Starting PDF generation
+2025-07-13 16:19:26,506 - INFO - Using font: Helvetica with size 12.0
+2025-07-13 16:19:26,506 - INFO - Calculated grid: 2x5, offsets: 19.400000000000006mm, 11.0mm
+2025-07-13 16:19:26,506 - INFO - Creating PDF at: E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.cardhatch.pdf
+2025-07-13 16:19:26,507 - INFO - Generating 1 pages for 3 cards, flip_mode=long
+2025-07-13 16:19:26,510 - INFO - PDF saved successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.cardhatch.pdf
+2025-07-13 16:19:26,510 - INFO - PDF generated successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.cardhatch.pdf
+2025-07-13 16:21:59,580 - INFO - Opening file dialog for input file selection
+2025-07-13 16:22:01,755 - INFO - Selected input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.xlsx
+2025-07-13 16:22:01,755 - INFO - Set default output file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.pdf
+2025-07-13 16:22:06,946 - INFO - Starting PDF generation process
+2025-07-13 16:22:06,947 - INFO - Settings saved to cardhatch_settings.json
+2025-07-13 16:22:06,947 - INFO - Reading input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.xlsx
+2025-07-13 16:22:06,952 - INFO - Successfully read 3 rows from input file
+2025-07-13 16:22:06,952 - INFO - Starting PDF generation
+2025-07-13 16:22:06,952 - INFO - Using font: Helvetica with size 12.0
+2025-07-13 16:22:06,952 - INFO - Calculated grid: 2x5, offsets: 19.400000000000006mm, 11.0mm
+2025-07-13 16:22:06,952 - INFO - Creating PDF at: E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.pdf
+2025-07-13 16:22:06,952 - INFO - Generating 1 pages for 3 cards, flip_mode=long
+2025-07-13 16:22:06,954 - INFO - PDF saved successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.pdf
+2025-07-13 16:22:06,954 - INFO - PDF generated successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.pdf
+2025-07-13 16:22:15,374 - INFO - Opening color picker for bottom bar
+2025-07-13 16:22:18,956 - INFO - Selected bottom bar color: #eb0214
+2025-07-13 16:22:20,381 - INFO - Starting PDF generation process
+2025-07-13 16:22:20,381 - INFO - Settings saved to cardhatch_settings.json
+2025-07-13 16:22:20,382 - INFO - Reading input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.xlsx
+2025-07-13 16:22:20,386 - INFO - Successfully read 3 rows from input file
+2025-07-13 16:22:20,386 - INFO - Starting PDF generation
+2025-07-13 16:22:20,386 - INFO - Using font: Helvetica with size 12.0
+2025-07-13 16:22:20,386 - INFO - Calculated grid: 2x5, offsets: 19.400000000000006mm, 11.0mm
+2025-07-13 16:22:20,386 - INFO - Creating PDF at: E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.pdf
+2025-07-13 16:22:20,386 - INFO - Generating 1 pages for 3 cards, flip_mode=short
+2025-07-13 16:22:20,388 - INFO - PDF saved successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.pdf
+2025-07-13 16:22:20,388 - INFO - PDF generated successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.pdf
+2025-07-13 16:22:34,517 - INFO - Starting PDF generation process
+2025-07-13 16:22:34,518 - INFO - Settings saved to cardhatch_settings.json
+2025-07-13 16:22:34,518 - INFO - Reading input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.xlsx
+2025-07-13 16:22:34,523 - INFO - Successfully read 3 rows from input file
+2025-07-13 16:22:34,523 - INFO - Starting PDF generation
+2025-07-13 16:22:34,523 - INFO - Using font: Helvetica with size 12.0
+2025-07-13 16:22:34,523 - INFO - Calculated grid: 2x5, offsets: 19.400000000000006mm, 11.0mm
+2025-07-13 16:22:34,524 - INFO - Creating PDF at: E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.pdf
+2025-07-13 16:22:34,524 - INFO - Generating 1 pages for 3 cards, flip_mode=long
+2025-07-13 16:22:34,525 - INFO - PDF saved successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.pdf
+2025-07-13 16:22:34,526 - INFO - PDF generated successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.pdf
+2025-07-13 16:22:52,932 - INFO - Opening file dialog for output file selection
+2025-07-13 16:23:08,162 - INFO - Selected output file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.cardhatch.pdf
+2025-07-13 16:23:46,301 - INFO - Starting PDF generation process
+2025-07-13 16:23:46,301 - INFO - Settings saved to cardhatch_settings.json
+2025-07-13 16:23:46,302 - INFO - Reading input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.xlsx
+2025-07-13 16:23:46,306 - INFO - Successfully read 3 rows from input file
+2025-07-13 16:23:46,306 - INFO - Starting PDF generation
+2025-07-13 16:23:46,306 - INFO - Using font: Helvetica with size 12.0
+2025-07-13 16:23:46,306 - INFO - Calculated grid: 2x5, offsets: 19.400000000000006mm, 11.0mm
+2025-07-13 16:23:46,306 - INFO - Creating PDF at: E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.helvetica.short.cardhatch.-0-3.pdf
+2025-07-13 16:23:46,307 - INFO - Generating 1 pages for 3 cards, flip_mode=short
+2025-07-13 16:23:46,308 - INFO - PDF saved successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.helvetica.short.cardhatch.-0-3.pdf
+2025-07-13 16:23:46,308 - INFO - PDF generated successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.helvetica.short.cardhatch.-0-3.pdf
+2025-07-13 16:24:07,196 - INFO - Opening color picker for top bar
+2025-07-13 16:24:09,579 - INFO - Selected top bar color: #0000ff
+2025-07-13 16:24:30,740 - INFO - Starting PDF generation process
+2025-07-13 16:24:30,741 - INFO - Settings saved to cardhatch_settings.json
+2025-07-13 16:24:30,741 - INFO - Reading input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.xlsx
+2025-07-13 16:24:30,745 - INFO - Successfully read 3 rows from input file
+2025-07-13 16:24:30,746 - INFO - Starting PDF generation
+2025-07-13 16:24:30,746 - INFO - Using font: Helvetica with size 12.0
+2025-07-13 16:24:30,746 - INFO - Calculated grid: 2x5, offsets: 19.400000000000006mm, 11.0mm
+2025-07-13 16:24:30,746 - INFO - Creating PDF at: E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.helvetica.long.cardhatch.0-3-0.pdf
+2025-07-13 16:24:30,746 - INFO - Generating 1 pages for 3 cards, flip_mode=long
+2025-07-13 16:24:30,747 - INFO - PDF saved successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.helvetica.long.cardhatch.0-3-0.pdf
+2025-07-13 16:24:30,748 - INFO - PDF generated successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.helvetica.long.cardhatch.0-3-0.pdf
+2025-07-13 16:24:50,535 - INFO - Application closed
