@@ -1,5 +1,11 @@
 # cardhatch
 
+## 0.5.1
+
+### Patch Changes
+
+- default 'qty' 1 + if not good
+
 ## 0.5.0
 
 ### Minor Changes

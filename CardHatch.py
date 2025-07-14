@@ -77,6 +77,9 @@ csv, excel and ods types all be shown at the same time in the picker,
 include a `Various amounts from 'qty' col` checkbox
  to apply diff quantity to certain cards [via column 'qty'],
    and a `Multiple` value input box to multiply *all* cards by a same amount
+
+default empty 'qty' values to 1 [before multiplier applied],
+ and notify user if any [and list which] 'qty' values are empty, not numeric or not positive integers
 """
 
 """
@@ -96,7 +99,8 @@ font style, and text color. Users can also specify variable card quantities via 
 Cards are centered on the page both horizontally and vertically, with text centered within each card both horizontally and vertically.
 Front and back pages are aligned for duplex printing based on the selected flip mode (long or short edge). Settings are saved to a JSON
 file for persistence. Comprehensive logging tracks all stages of the process, with logs written to both console and a file in the
-current working directory.
+current working directory. Empty, non-numeric, non-integer, or non-positive 'qty' values are defaulted to 1, and users are notified
+of any such values with row numbers.
 
 Dependencies:
 - pandas
@@ -127,7 +131,7 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
         logging.StreamHandler(),  # Console output
-        logging.FileHandler("cardhatch.log"),  # File output in cwd
+        logging.FileHandler("flashcard_app.log"),  # File output in cwd
     ],
 )
 logger = logging.getLogger(__name__)
@@ -158,7 +162,7 @@ DEFAULT_SETTINGS = {
     "quantity_multiplier": 1,
 }
 
-SETTINGS_FILE = "cardhatch_settings.json"
+SETTINGS_FILE = "flashcard_gui_settings.json"
 
 
 def load_settings():
@@ -329,7 +333,8 @@ class FlashcardApp(tk.Tk):
     font style, text color, variable quantities via a 'qty' column, and a global quantity multiplier. Cards are centered on
     the page, and text within each card is centered both horizontally and vertically. Front/back pages are aligned for duplex
     printing based on the flip mode. Settings are saved to a JSON file for persistence. Logging tracks all user interactions
-    and processing steps.
+    and processing steps. Empty, non-numeric, non-integer, or non-positive 'qty' values default to 1, and users are notified
+    of any such values with row numbers.
     """
 
     def __init__(self):
@@ -626,8 +631,9 @@ class FlashcardApp(tk.Tk):
         Validate inputs, save settings, load data, validate 'qty' column if used, and generate the PDF.
 
         Saves current GUI inputs to settings, reads the input file (CSV, Excel, or ODS), validates columns
-        (including 'qty' if enabled), and calls the PDF generation function. Displays error messages via GUI
-        if issues occur.
+        (including 'qty' if enabled, defaulting empty 'qty' values to 1), and calls the PDF generation function.
+        Notifies user of any empty, non-numeric, non-integer, or non-positive integer 'qty' values with row numbers.
+        Displays error messages via GUI if issues occur.
         """
         logger.info("Starting PDF generation process")
         # Save current settings
@@ -714,26 +720,53 @@ class FlashcardApp(tk.Tk):
         # Validate qty column values if used
         if settings["use_qty_column"]:
             try:
+                # Default empty values to 1
+                data["qty"] = data["qty"].fillna(1)
+                invalid_rows = []
+
+                # Convert to numeric, non-numeric values become NaN
                 qty_values = pd.to_numeric(data["qty"], errors="coerce")
-                if qty_values.isna().any():
-                    logger.error("Non-numeric values found in 'qty' column")
-                    messagebox.showerror(
-                        "Error", "All values in 'qty' column must be numeric"
+
+                # Check for non-numeric (NaN) values
+                non_numeric_rows = data.index[qty_values.isna()].tolist()
+                for row in non_numeric_rows:
+                    invalid_rows.append(
+                        f"Row {row + 2}: Non-numeric value '{data['qty'].iloc[row]}'"
                     )
-                    return
-                if not qty_values.apply(float.is_integer).all():
-                    logger.error("Non-integer values found in 'qty' column")
-                    messagebox.showerror(
-                        "Error", "All values in 'qty' column must be integers"
+
+                # Replace NaN with 1 in the data
+                qty_values = qty_values.fillna(1)
+
+                # Check for non-integer values (e.g., 2.5)
+                non_integer_rows = qty_values.index[
+                    qty_values != qty_values.astype(int)
+                ].tolist()
+                for row in non_integer_rows:
+                    invalid_rows.append(
+                        f"Row {row + 2}: Non-integer value '{data['qty'].iloc[row]}'"
                     )
-                    return
-                if (qty_values <= 0).any():
-                    logger.error("Non-positive values found in 'qty' column")
-                    messagebox.showerror(
-                        "Error", "All values in 'qty' column must be positive"
+
+                # Check for non-positive values (≤ 0)
+                non_positive_rows = qty_values.index[qty_values <= 0].tolist()
+                for row in non_positive_rows:
+                    invalid_rows.append(
+                        f"Row {row + 2}: Non-positive value '{data['qty'].iloc[row]}'"
                     )
-                    return
-                logger.info("Validated 'qty' column successfully")
+
+                # Default invalid values to 1
+                data["qty"] = qty_values.where(
+                    (qty_values > 0) & (qty_values == qty_values.astype(int)), 1
+                ).astype(int)
+
+                if invalid_rows:
+                    warning_message = (
+                        "Issues found in 'qty' column (defaulted to 1):\n"
+                        + "\n".join(invalid_rows)
+                    )
+                    logger.warning(warning_message)
+                    messagebox.showwarning("Warning", warning_message)
+                else:
+                    logger.info("Validated 'qty' column successfully")
             except Exception as e:
                 logger.error(f"Error validating 'qty' column: {e}")
                 messagebox.showerror("Error", f"Error validating 'qty' column: {e}")

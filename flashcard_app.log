@@ -1,0 +1,37 @@
+2025-07-14 13:01:57,656 - INFO - Loading settings from flashcard_gui_settings.json
+2025-07-14 13:01:57,656 - INFO - Settings file not found, using default settings
+2025-07-14 13:01:57,657 - INFO - Starting Flashcard PDF Generator application
+2025-07-14 13:01:57,881 - INFO - Initializing FlashcardApp GUI
+2025-07-14 13:01:57,889 - INFO - GUI initialization complete
+2025-07-14 13:02:15,114 - INFO - Opening file dialog for input file selection
+2025-07-14 13:02:17,600 - INFO - Selected input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-csv.csv
+2025-07-14 13:02:17,600 - INFO - Set default output file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-csv.pdf
+2025-07-14 13:03:23,416 - INFO - Starting PDF generation process
+2025-07-14 13:03:23,417 - INFO - Settings saved to flashcard_gui_settings.json
+2025-07-14 13:03:23,417 - INFO - Reading input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-csv.csv
+2025-07-14 13:03:23,432 - INFO - Successfully read 3 rows from input file
+2025-07-14 13:03:23,437 - INFO - Validated 'qty' column successfully
+2025-07-14 13:03:23,437 - INFO - Starting PDF generation
+2025-07-14 13:03:23,437 - INFO - Using font: Helvetica with size 12.0
+2025-07-14 13:03:23,437 - ERROR - Card grid with margins is too large for the page size
+2025-07-14 13:03:23,438 - ERROR - PDF generation failed: Card grid with margins is too large for the page size.
+2025-07-14 13:03:29,724 - INFO - Starting PDF generation process
+2025-07-14 13:03:29,725 - INFO - Settings saved to flashcard_gui_settings.json
+2025-07-14 13:03:29,725 - INFO - Reading input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-csv.csv
+2025-07-14 13:03:29,726 - INFO - Successfully read 3 rows from input file
+2025-07-14 13:03:29,727 - INFO - Validated 'qty' column successfully
+2025-07-14 13:03:29,727 - INFO - Starting PDF generation
+2025-07-14 13:03:29,727 - INFO - Using font: Helvetica with size 12.0
+2025-07-14 13:03:29,727 - INFO - Calculated grid: 2x5, offsets: 19.400000000000006mm, 11.0mm
+2025-07-14 13:03:29,728 - INFO - Creating PDF at: E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-csv.helv.qty.x2.sh.cardhatch.0-5-1.pdf
+2025-07-14 13:03:29,728 - INFO - Total cards to print: 8 (use_qty_column=True, multiplier=2)
+2025-07-14 13:03:29,728 - INFO - Generating 1 pages for 8 cards, flip_mode=short
+2025-07-14 13:03:29,744 - INFO - PDF saved successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-csv.helv.qty.x2.sh.cardhatch.0-5-1.pdf
+2025-07-14 13:03:29,744 - INFO - PDF generated successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-csv.helv.qty.x2.sh.cardhatch.0-5-1.pdf
+2025-07-14 13:04:04,244 - INFO - Application closed
+2025-07-14 13:06:02,245 - INFO - Loading settings from flashcard_gui_settings.json
+2025-07-14 13:06:02,251 - INFO - Settings loaded successfully
+2025-07-14 13:06:02,252 - INFO - Starting Flashcard PDF Generator application
+2025-07-14 13:06:02,281 - INFO - Initializing FlashcardApp GUI
+2025-07-14 13:06:02,287 - INFO - GUI initialization complete
+2025-07-14 13:06:06,838 - INFO - Application closed
