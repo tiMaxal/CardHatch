@@ -1,9 +1,10 @@
 
 MIT License
-
 Copyright (c) 2025 tiMaxal
+
 # `CardHatch`
-AI 'voding' [vibe-coding] history
+
+AI 'voding' [vibe-coding] prompt history
 
 
 ## 20250709
@@ -120,4 +121,7 @@ frame_buttons.columnconfigure(4, weight=1) # right spacer
         and add an option to each for background color;
     - similarly for 'Fonts'
 
+## 20250712
 
+- prompt 18:
+    -remove arial

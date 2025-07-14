@@ -14,7 +14,7 @@ The application allows users to select an input file
  (showing CSV, Excel, and ODS files simultaneously by default), specify column
   names for front and back content (with an option to autofill from the first two columns),
     card layout, page size, margins, color bars, flip mode for duplex printing, font size,
-     font family (including Arial), font style, text color, background color, variable quantities via a 'qty' column,
+     font family, font style, text color, background color, variable quantities via a 'qty' column,
       and a global quantity multiplier limited to 4 digits. Cards and text are centered,
         and front/back pages are aligned for duplex printing.
 The GUI is organized into sections, is resizable, and includes a vertical scrollbar on the right
@@ -297,7 +297,7 @@ class FlashcardApp(tk.Tk):
         super().__init__()
         logger.info("Initializing FlashcardApp GUI")
         self.title("Flashcard PDF Generator")
-        self.geometry("750x850")  # Increased height again to ensure buttons visibility
+        self.geometry("750x850")  # Increased height to ensure buttons visibility
         self.resizable(True, True)  # Enable window resizing
 
         # Create canvas and scrollbar
@@ -443,16 +443,20 @@ class FlashcardApp(tk.Tk):
         self.entry_front_font_size.grid(row=0, column=1, sticky=tk.EW)
         self.entry_front_font_size.insert(0, str(settings.get("front_font_size", 12)))
 
-        tk.Label(frame_font_front, text="Font Family:").grid(row=1, column=0, sticky=tk.W)
+        tk.Label(frame_font_front, text="Font Family:").grid(
+            row=1, column=0, sticky=tk.W
+        )
         self.front_font_family_var = tk.StringVar(
             value=settings.get("front_font_family", "Helvetica")
         )
-        font_families = ["Helvetica", "Times-Roman", "Courier", "Arial"]
-        tk.OptionMenu(frame_font_front, self.front_font_family_var, *font_families).grid(
-            row=1, column=1, sticky=tk.EW
-        )
+        font_families = ["Helvetica", "Times-Roman", "Courier"]
+        tk.OptionMenu(
+            frame_font_front, self.front_font_family_var, *font_families
+        ).grid(row=1, column=1, sticky=tk.EW)
 
-        tk.Label(frame_font_front, text="Font Style:").grid(row=2, column=0, sticky=tk.W)
+        tk.Label(frame_font_front, text="Font Style:").grid(
+            row=2, column=0, sticky=tk.W
+        )
         self.front_font_style_var = tk.StringVar(
             value=settings.get("front_font_style", "Normal")
         )
@@ -471,7 +475,9 @@ class FlashcardApp(tk.Tk):
         self.entry_back_font_size.grid(row=0, column=1, sticky=tk.EW)
         self.entry_back_font_size.insert(0, str(settings.get("back_font_size", 12)))
 
-        tk.Label(frame_font_back, text="Font Family:").grid(row=1, column=0, sticky=tk.W)
+        tk.Label(frame_font_back, text="Font Family:").grid(
+            row=1, column=0, sticky=tk.W
+        )
         self.back_font_family_var = tk.StringVar(
             value=settings.get("back_font_family", "Helvetica")
         )
@@ -500,7 +506,9 @@ class FlashcardApp(tk.Tk):
         frame_colors_front.columnconfigure(2, weight=0)
         frame_colors_front.columnconfigure(3, weight=0)
 
-        tk.Label(frame_colors_front, text="Text Color:").grid(row=0, column=0, sticky=tk.W)
+        tk.Label(frame_colors_front, text="Text Color:").grid(
+            row=0, column=0, sticky=tk.W
+        )
         self.front_text_color_var = tk.StringVar(
             value=settings.get("front_text_color", "#000000")
         )
@@ -595,7 +603,9 @@ class FlashcardApp(tk.Tk):
         frame_colors_back.columnconfigure(2, weight=0)
         frame_colors_back.columnconfigure(3, weight=0)
 
-        tk.Label(frame_colors_back, text="Text Color:").grid(row=0, column=0, sticky=tk.W)
+        tk.Label(frame_colors_back, text="Text Color:").grid(
+            row=0, column=0, sticky=tk.W
+        )
         self.back_text_color_var = tk.StringVar(
             value=settings.get("back_text_color", "#000000")
         )
@@ -771,18 +781,16 @@ class FlashcardApp(tk.Tk):
         state = tk.DISABLED if autofill_enabled else tk.NORMAL
         logger.info(f"Setting column entries state to {state}")
 
-        # Always clear entries to avoid stale values
-        self.entry_front.delete(0, tk.END)
-        self.entry_back.delete(0, tk.END)
-
-        # Temporarily enable entries to allow updates
+        # Clear entries before updating
         self.entry_front.config(state=tk.NORMAL)
         self.entry_back.config(state=tk.NORMAL)
+        self.entry_front.delete(0, tk.END)
+        self.entry_back.delete(0, tk.END)
 
         if autofill_enabled and self.entry_file.get():
             self.autofill_column_names(self.entry_file.get())
         else:
-            # Restore saved or default values if autofill is disabled
+            # Restore saved or default values
             self.entry_front.insert(0, settings.get("front_column", ""))
             self.entry_back.insert(0, settings.get("back_column", ""))
             logger.info(
@@ -816,11 +824,12 @@ class FlashcardApp(tk.Tk):
             self.entry_output.insert(0, default_output)
 
             # Clear and update column entries
+            self.entry_front.config(state=tk.NORMAL)
+            self.entry_back.config(state=tk.NORMAL)
             self.entry_front.delete(0, tk.END)
             self.entry_back.delete(0, tk.END)
+
             if self.autofill_columns_var.get():
-                self.entry_front.config(state=tk.NORMAL)
-                self.entry_back.config(state=tk.NORMAL)
                 self.autofill_column_names(file_path)
                 self.entry_front.config(state=tk.DISABLED)
                 self.entry_back.config(state=tk.DISABLED)
@@ -1041,7 +1050,9 @@ class FlashcardApp(tk.Tk):
         settings["front_color_bar_top"] = self.front_color_bar_top_var.get()
         settings["front_color_bar_bottom"] = self.front_color_bar_bottom_var.get()
         settings["front_color_bar_top_color"] = self.front_color_bar_top_color.get()
-        settings["front_color_bar_bottom_color"] = self.front_color_bar_bottom_color.get()
+        settings["front_color_bar_bottom_color"] = (
+            self.front_color_bar_bottom_color.get()
+        )
         settings["front_background_color"] = self.front_background_color_var.get()
         settings["back_color_bar_top"] = self.back_color_bar_top_var.get()
         settings["back_color_bar_bottom"] = self.back_color_bar_bottom_var.get()
@@ -1244,12 +1255,10 @@ class FlashcardApp(tk.Tk):
             ("Courier", "Bold"): "Courier-Bold",
             ("Courier", "Italic"): "Courier-Oblique",
             ("Courier", "BoldItalic"): "Courier-BoldOblique",
-            ("Arial", "Normal"): "Helvetica",
-            ("Arial", "Bold"): "Helvetica-Bold",
-            ("Arial", "Italic"): "Helvetica-Oblique",
-            ("Arial", "BoldItalic"): "Helvetica-BoldOblique",
         }
-        front_font_name = font_map.get((front_font_family, front_font_style), "Helvetica")
+        front_font_name = font_map.get(
+            (front_font_family, front_font_style), "Helvetica"
+        )
         back_font_name = font_map.get((back_font_family, back_font_style), "Helvetica")
 
         page_size_pt = (mm(page_w), mm(page_h))
