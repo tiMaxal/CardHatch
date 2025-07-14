@@ -1,5 +1,11 @@
 # cardhatch
 
+## 0.7.0
+
+### Minor Changes
+
+- Enhanced GUI, Autofill, and Usability Improvements
+
 ## 0.6.0
 
 ### Minor Changes
