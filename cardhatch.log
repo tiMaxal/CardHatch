@@ -351,3 +351,88 @@
 2025-07-15 07:38:11,896 - INFO - Column entries updated, front: 'Front', back: 'Back'
 2025-07-15 07:38:11,896 - INFO - GUI initialization complete
 2025-07-15 07:38:17,959 - INFO - Application closed
+2025-07-15 07:59:36,245 - INFO - Loading settings from cardhatch_settings.json
+2025-07-15 07:59:36,258 - INFO - Settings loaded successfully
+2025-07-15 07:59:36,258 - INFO - Starting Flashcard PDF Generator application
+2025-07-15 07:59:36,312 - INFO - Initializing FlashcardApp GUI
+2025-07-15 08:02:52,567 - INFO - Loading settings from cardhatch_settings.json
+2025-07-15 08:02:52,568 - INFO - Settings loaded successfully
+2025-07-15 08:02:52,568 - INFO - Starting Flashcard PDF Generator application
+2025-07-15 08:02:52,599 - INFO - Initializing FlashcardApp GUI
+2025-07-15 08:09:05,316 - INFO - Loading settings from cardhatch_settings.json
+2025-07-15 08:09:05,318 - INFO - Settings loaded successfully
+2025-07-15 08:09:05,318 - INFO - Starting Flashcard PDF Generator application
+2025-07-15 08:09:05,385 - INFO - Initializing FlashcardApp GUI
+2025-07-15 08:09:05,392 - INFO - Setting column entries state to normal
+2025-07-15 08:09:05,393 - INFO - Restored front column to 'Front', back column to 'Back'
+2025-07-15 08:09:05,538 - INFO - Column entries updated, front: 'Front', back: 'Back'
+2025-07-15 08:09:05,538 - INFO - GUI initialization complete
+2025-07-15 08:09:49,738 - INFO - Opening create business card popup
+2025-07-15 08:10:23,771 - INFO - Saving new business card file
+2025-07-15 08:10:23,832 - INFO - Saved new file: new_card1.csv
+2025-07-15 08:10:23,832 - INFO - Loading new file into main app: new_card1.csv
+2025-07-15 08:10:23,832 - INFO - Setting column entries state to normal
+2025-07-15 08:10:23,832 - INFO - Restored front column to 'Front', back column to 'Back'
+2025-07-15 08:10:23,833 - INFO - Column entries updated, front: 'Front', back: 'Back'
+2025-07-15 08:10:25,572 - INFO - Business card creation canceled
+2025-07-15 08:10:35,445 - INFO - Setting column entries state to disabled
+2025-07-15 08:10:35,445 - INFO - Attempting to autofill column names from new_card1.csv
+2025-07-15 08:10:35,449 - INFO - Sanitized headers: ['Front', 'Back', 'qty']
+2025-07-15 08:10:35,450 - INFO - Set front column to 'Front'
+2025-07-15 08:10:35,450 - INFO - Set back column to 'Back'
+2025-07-15 08:10:35,450 - INFO - Autofill completed, front: 'Front', back: 'Back'
+2025-07-15 08:10:35,451 - INFO - Column entries updated, front: 'Front', back: 'Back'
+2025-07-15 08:10:36,757 - INFO - Setting column entries state to normal
+2025-07-15 08:10:36,757 - INFO - Restored front column to 'Front', back column to 'Back'
+2025-07-15 08:10:36,758 - INFO - Column entries updated, front: 'Front', back: 'Back'
+2025-07-15 08:11:45,963 - INFO - Opening color picker for front top bar
+2025-07-15 08:11:48,911 - INFO - Selected front top bar color: #b1bc85
+2025-07-15 08:11:50,145 - INFO - Opening color picker for front bottom bar
+2025-07-15 08:11:53,440 - INFO - Selected front bottom bar color: #837dc4
+2025-07-15 08:12:10,998 - INFO - Opening color picker for back top bar
+2025-07-15 08:12:13,146 - INFO - Selected back top bar color: #c47dae
+2025-07-15 08:12:14,151 - INFO - Opening color picker for back bottom bar
+2025-07-15 08:12:17,319 - INFO - Selected back bottom bar color: #d9a068
+2025-07-15 08:12:19,367 - INFO - Opening color picker for back background color
+2025-07-15 08:12:23,254 - INFO - Selected back background color: #87baa9
+2025-07-15 08:12:34,270 - INFO - Starting PDF generation process
+2025-07-15 08:12:34,270 - INFO - Settings saved to cardhatch_settings.json
+2025-07-15 08:12:34,271 - INFO - Reading input file: new_card1.csv
+2025-07-15 08:12:34,272 - INFO - Read 1 rows with 3 columns
+2025-07-15 08:12:34,274 - INFO - Starting PDF generation
+2025-07-15 08:14:01,569 - INFO - Loading settings from cardhatch_settings.json
+2025-07-15 08:14:01,576 - INFO - Settings loaded successfully
+2025-07-15 08:14:01,576 - INFO - Starting Flashcard PDF Generator application
+2025-07-15 08:14:01,618 - INFO - Initializing FlashcardApp GUI
+2025-07-15 08:14:01,630 - INFO - Setting column entries state to normal
+2025-07-15 08:14:01,630 - INFO - Restored front column to 'Front', back column to 'Back'
+2025-07-15 08:14:01,773 - INFO - Column entries updated, front: 'Front', back: 'Back'
+2025-07-15 08:14:01,773 - INFO - GUI initialization complete
+2025-07-15 08:14:04,498 - INFO - Application closed
+2025-07-15 08:22:22,447 - INFO - Loading settings from cardhatch_settings.json
+2025-07-15 08:22:22,447 - INFO - Settings loaded successfully
+2025-07-15 08:22:22,447 - INFO - Starting Flashcard PDF Generator application
+2025-07-15 08:22:22,478 - INFO - Initializing FlashcardApp GUI
+2025-07-15 08:22:22,485 - INFO - Setting column entries state to normal
+2025-07-15 08:22:22,485 - INFO - Restored front column to 'Front', back column to 'Back'
+2025-07-15 08:22:22,637 - INFO - Column entries updated, front: 'Front', back: 'Back'
+2025-07-15 08:22:22,637 - INFO - GUI initialization complete
+2025-07-15 08:22:25,041 - INFO - Opening create business card popup
+2025-07-15 08:22:26,987 - INFO - Opening file dialog for loading previous card file
+2025-07-15 08:22:30,213 - INFO - Loaded content from E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/new_card1.csv
+2025-07-15 08:22:58,546 - INFO - Business card creation canceled
+2025-07-15 08:23:30,410 - INFO - Setting column entries state to disabled
+2025-07-15 08:23:30,411 - INFO - Attempting to autofill column names from new_card1.csv
+2025-07-15 08:23:30,412 - INFO - Sanitized headers: ['Front', 'Back', 'qty']
+2025-07-15 08:23:30,412 - INFO - Set front column to 'Front'
+2025-07-15 08:23:30,412 - INFO - Set back column to 'Back'
+2025-07-15 08:23:30,414 - INFO - Autofill completed, front: 'Front', back: 'Back'
+2025-07-15 08:23:30,415 - INFO - Column entries updated, front: 'Front', back: 'Back'
+2025-07-15 08:23:32,264 - INFO - Setting column entries state to normal
+2025-07-15 08:23:32,264 - INFO - Restored front column to 'Front', back column to 'Back'
+2025-07-15 08:23:32,265 - INFO - Column entries updated, front: 'Front', back: 'Back'
+2025-07-15 08:23:50,137 - INFO - Opening create business card popup
+2025-07-15 08:23:58,013 - INFO - Opening file dialog for loading previous card file
+2025-07-15 08:24:01,198 - INFO - Loaded content from E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/new_card1.csv
+2025-07-15 08:24:11,051 - INFO - Business card creation canceled
+2025-07-15 08:24:39,502 - INFO - Application closed

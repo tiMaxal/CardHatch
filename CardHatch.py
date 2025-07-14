@@ -1,32 +1,20 @@
-"""
-Install Required Packages:
- bash
-pip install pandas reportlab openpyxl
-
-"""
+##  cardHatch ##
 
 """
 Flashcard PDF Generator
 
-This script creates a Tkinter-based GUI application that
- generates a double-sided flashcard PDF from a CSV, Excel, or ODS file.
-The application allows users to select an input file 
- (showing CSV, Excel, and ODS files simultaneously by default), specify column
-  names for front and back content (with an option to autofill from the first two columns),
-    card layout, page size, margins, color bars, flip mode for duplex printing, font size,
-     font family, font style, text color, background color, variable quantities via a 'qty' column,
-      and a global quantity multiplier limited to 4 digits. Cards and text are centered,
-        and front/back pages are aligned for duplex printing.
-The GUI is organized into sections, is resizable, and includes a vertical scrollbar on the right
- to access all elements if they exceed the window height. The 'Colors' and 'Font Details' sections
-  are split into two equal parts for front and back, with options for text color, top/bottom color bars,
-   background color, font size, family, and style for each side.
-All elements, including Start and Exit buttons, are visible on window open.
-Settings are saved to a JSON file for persistence.
-Comprehensive logging tracks all stages.
-Empty, non-numeric, non-integer, or non-positive 'qty' values default to 1, with user notification.
-Text in cells can include carriage returns (CR, LF, or CRLF) for multi-line formatting,
- respected in the output PDF.
+A Tkinter-based GUI application for generating professionally formatted, double-sided flashcard PDFs from spreadsheet data (CSV, Excel, or ODS). 
+
+Key Features:
+- **Flexible File Input:** Supports CSV, Excel (.xlsx, .xls), and ODS files, with a unified file picker and autofill of column names from headers.
+- **Customizable Card Design:** Configure card size, layout (cards per row), page size, and margins. Cards and text are centered for precise duplex printing alignment.
+- **Front/Back Customization:** Separate color, font, and style options for front and back card sides, including background color, text color, color bars (top/bottom), font family, size, and style.
+- **Duplex Printing Support:** Choose flip mode (long or short edge) to ensure correct front/back alignment when printing double-sided.
+- **Quantity Handling:** Use a 'qty' column for per-card quantities, with a global multiplier (up to 4 digits). Non-numeric or invalid quantities default to 1 and trigger user warnings.
+- **Multi-line Text Support:** Recognizes CR, LF, and CRLF for formatted multi-line cell content.
+- **Settings Persistence:** Saves and loads user settings to/from a JSON file for convenience.
+- **Business Card File Creation:** Popup dialog for creating and saving new card files (CSV), with optional immediate loading into the main app.
+- **Comprehensive Logging:** All actions and errors are logged for troubleshooting.
 
 Dependencies:
 - pandas
@@ -35,8 +23,11 @@ Dependencies:
 - odfpy
 - csv (standard library)
 
-Install requirements: pip install pandas reportlab openpyxl odfpy
+Install requirements:
+    pip install pandas reportlab openpyxl odfpy
+
 """
+
 
 import tkinter as tk
 from tkinter import filedialog, messagebox, colorchooser
@@ -74,7 +65,7 @@ DEFAULT_SETTINGS = {
     "output_file": "",
     "front_column": "",
     "back_column": "",
-    "cards_per_row": 3,
+    "cards_per_row": 2,
     "card_width": 85.6,
     "card_height": 55.0,
     "page_size": "210x297",
@@ -364,6 +355,10 @@ class FlashcardApp(tk.Tk):
             frame_file, text="Browse...", command=self.browse_output_file
         )
         btn_output_browse.grid(row=1, column=2)
+
+        btn_create_business_card = tk.Button(frame_file, text="Create Business Card...", command=self.create_business_card_popup)
+        btn_create_business_card.grid(row=0, column=3, padx=5)
+        frame_file.columnconfigure(3, weight=0)
 
         self.autofill_columns_var = tk.BooleanVar(
             value=settings.get("autofill_columns", False)
@@ -1017,6 +1012,134 @@ class FlashcardApp(tk.Tk):
             self.back_color_bar_bottom_color.set(color)
             self.lbl_back_bottom_color.config(bg=color)
             logger.info(f"Selected back bottom bar color: {color}")
+
+    def create_business_card_popup(self):
+        """Open a modal dialog for creating a new business card CSV file."""
+        logger.info("Opening create business card popup")
+        popup = tk.Toplevel(self)
+        popup.title("Create Business Card")
+        popup.geometry("400x300")
+        popup.resizable(False, False)
+        popup.grab_set()
+
+        frame = tk.Frame(popup)
+        frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+        frame.columnconfigure(1, weight=1)
+
+        tk.Label(frame, text="Front Content:").grid(row=0, column=0, sticky=tk.W)
+        self.text_front = tk.Text(frame, height=4, width=40)
+        self.text_front.grid(row=0, column=1, sticky=tk.EW, pady=5)
+
+        tk.Label(frame, text="Back Content:").grid(row=1, column=0, sticky=tk.W)
+        self.text_back = tk.Text(frame, height=4, width=40)
+        self.text_back.grid(row=1, column=1, sticky=tk.EW, pady=5)
+
+        tk.Label(frame, text="Filename:").grid(row=2, column=0, sticky=tk.W)
+        self.entry_filename = tk.Entry(frame)
+        self.entry_filename.grid(row=2, column=1, sticky=tk.EW, pady=5)
+        self.entry_filename.insert(0, "new_cards.csv")
+
+        btn_load = tk.Button(frame, text="Load Previous File", command=self.load_previous_card_file)
+        btn_load.grid(row=3, column=0, columnspan=2, pady=5)
+
+        self.load_to_main_var = tk.BooleanVar(value=False)
+        tk.Checkbutton(
+            frame,
+            text="Load file in main app after saving",
+            variable=self.load_to_main_var,
+        ).grid(row=4, column=0, columnspan=2, sticky=tk.W, pady=5)
+
+        frame_buttons = tk.Frame(frame)
+        frame_buttons.grid(row=5, column=0, columnspan=2, pady=10)
+        frame_buttons.columnconfigure(0, weight=1)
+        frame_buttons.columnconfigure(1, weight=0)
+        frame_buttons.columnconfigure(2, weight=1)
+        frame_buttons.columnconfigure(3, weight=0)
+        frame_buttons.columnconfigure(4, weight=1)
+
+        btn_save = tk.Button(frame_buttons, text="Save", command=self.save_business_card)
+        btn_save.grid(row=0, column=1, sticky=tk.EW)
+        btn_cancel = tk.Button(frame_buttons, text="Cancel", command=lambda: self.cancel_business_card(popup))
+        btn_cancel.grid(row=0, column=3, sticky=tk.EW)
+
+    def load_previous_card_file(self):
+        """Load content from a previous CSV file into the front and back text fields."""
+        logger.info("Opening file dialog for loading previous card file")
+        file_path = filedialog.askopenfilename(
+            filetypes=[("CSV files", "*.csv"), ("All files", "*")]
+        )
+        if not file_path:
+            logger.info("No file selected for loading")
+            return
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            content = content.replace("\\n", "\n")
+            df = pd.read_csv(
+                io.StringIO(content),
+                quoting=csv.QUOTE_ALL,
+                keep_default_na=False,
+                lineterminator="\n",
+            )
+            front_col = settings.get("front_column") or df.columns[0]
+            back_col = settings.get("back_column") or (df.columns[1] if len(df.columns) > 1 else "")
+            if front_col not in df.columns or (back_col and back_col not in df.columns):
+                logger.error(f"Columns {front_col}, {back_col} not found in file")
+                messagebox.showerror("Error", f"Columns {front_col}, {back_col} not found in file")
+                return
+            self.text_front.delete("1.0", tk.END)
+            self.text_back.delete("1.0", tk.END)
+            if not df.empty:
+                self.text_front.insert("1.0", str(df[front_col].iloc[0]))
+                if back_col:
+                    self.text_back.insert("1.0", str(df[back_col].iloc[0]))
+            logger.info(f"Loaded content from {file_path}")
+        except Exception as e:
+            logger.error(f"Failed to load file: {e}")
+        messagebox.showerror("Error", f"Failed to load file: {e}")
+
+    def save_business_card(self):
+        """Save the front and back content to a CSV file, optionally loading it into the main app."""
+        logger.info("Saving new business card file")
+        filename = self.entry_filename.get().strip()
+        if not filename:
+            logger.error("No filename provided")
+            messagebox.showerror("Error", "Please provide a filename.")
+            return
+        if not filename.lower().endswith(".csv"):
+            filename += ".csv"
+        front_content = self.text_front.get("1.0", tk.END).strip()
+        back_content = self.text_back.get("1.0", tk.END).strip()
+        if not front_content and not back_content:
+            logger.error("Both front and back content are empty")
+            messagebox.showerror("Error", "At least one of front or back content must be provided.")
+            return
+        try:
+            front_col = settings.get("front_column") or "Front"
+            back_col = settings.get("back_column") or "Back"
+            data = {front_col: [front_content], back_col: [back_content]}
+            if settings.get("use_qty_column", False):
+                data["qty"] = [1]
+            df = pd.DataFrame(data)
+            df.to_csv(filename, index=False, quoting=csv.QUOTE_ALL, lineterminator="\n")
+            logger.info(f"Saved new file: {filename}")
+            if self.load_to_main_var.get():
+                logger.info(f"Loading new file into main app: {filename}")
+                self.entry_file.delete(0, tk.END)
+                self.entry_file.insert(0, filename)
+                self.toggle_column_entries()
+            else:
+                logger.info("Not loading new file into main app")
+            messagebox.showinfo("Success", f"File saved as {filename}")
+            self.cancel_business_card(self.winfo_children()[-1])  # Close the popup
+        except Exception as e:
+            logger.error(f"Failed to save file: {e}")
+            messagebox.showerror("Error", f"Failed to save file: {e}")
+
+    def cancel_business_card(self, popup):
+        """Close the business card creation popup."""
+        logger.info("Business card creation canceled")
+        popup.destroy()
 
     def start_process(self):
         """

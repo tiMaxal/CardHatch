@@ -1,6 +1,6 @@
 {
   "name": "cardhatch",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "A tool for creating business or flash cards from CSV files.",
   "main": "CardHatch.py",
   "scripts": {

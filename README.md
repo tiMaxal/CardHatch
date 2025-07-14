@@ -1,69 +1,100 @@
-# Flashcard PDF Generator – README
+# `cardHatch`  – README
+# Business and Flash card PDF Generator
 
-Hatch your own Business or Flash Cards
+Hatch your own Business Cards or Flashcards
 
 ## Overview
 
-This application allows to create printable PDF flashcards (business card size) from two columns in an Excel or CSV file. Each card has a front and back, with options for color-coded bars, index, notes, and more. The app features a graphical user interface (GUI) for easy configuration and saves settings for future use.
+ This application generates printable PDF flashcards (business card size)
+  from spreadsheet data in Excel (`.xlsx`, `.xls`), CSV, or ODS files. 
+
+ Each card supports a front and back, with customizable formatting,
+  color-coded bars, and precise alignment for duplex printing. 
+
+ The app features a graphical user interface (GUI) for easy configuration,
+  with settings saved for future use and comprehensive logging for troubleshooting.
 
 ## Features
 
-- Import data from Excel (`.xlsx`, `.xls`) or CSV files
-- Select which columns to use for the front and back of cards
-- Optional columns for index and notes
-- Adjustable cards per row, page size, and margins
-- Add configurable color bars (top and/or bottom) for color-coding
-- Color pickers for bar customization
-- Output PDF file location selection
-- Text wrapping and optional truncation if content overflows card space
+- Import data from Excel (`.xlsx`, `.xls`), CSV, or ODS files
+- Select columns for front and back of cards, with optional autofill from headers
+- Optional `qty` column for variable card quantities, with a global multiplier (up to 4 digits)
+- Adjustable cards per row, card size, page size, and margins
+- Centered card and text alignment for professional output
+- Configurable color bars (top and/or bottom) with color pickers for front and back
+- Separate font size, family, style, text color, and background color for front and back
+- Support for multi-line text with CR, LF, or CRLF handling
+- Text wrapping with optional truncation for overflow
 - Visual cut lines for easy card separation
-- Settings are saved for the next session
+- Duplex printing support with flip mode (long or short edge)
+- Create new business card files via a popup dialog
+- Settings saved in `cardhatch_settings.json` for reuse
+- Comprehensive logging to `cardhatch.log` for debugging
 
 ## Installation
 
 1. **Install Python 3** (if not already installed).
 2. **Install required packages** by running:
-`pip install pandas reportlab openpyxl`
+   ```
+   pip install pandas reportlab openpyxl odfpy
+   ```
+   [or]
+   ```
+   pip install -r requirements.txt
+   ```
 3. **Save the script** (`CardHatch.py`) to your computer.
 
 ## Usage
 
 1. **Run the app:**
-`python CardHatch.py`
+   ```
+   python CardHatch.py
+   ```
 2. **In the GUI:**
-- Select your Excel/CSV file.
-- Choose the output PDF location.
-- Enter the column names for the front and back (and optional index/notes).
-- Adjust settings for cards per row, page size, margins, and color bars as desired.
-- Use the color pickers to set bar colors if enabled.
-- Check "Truncate overflow text" if you want long text to be shortened.
-- Click **Start** to generate the PDF, or **Exit** to close the app.
+   - Select your Excel, CSV, or ODS file.
+   - Choose the output PDF location.
+   - Specify column names for front and back (or enable autofill from headers).
+   - Adjust card layout (cards per row, card size, page size, margins).
+   - Customize front and back fonts (size, family, style) and colors (text, background, bars).
+   - Enable color bars and use color pickers for customization.
+   - Set flip mode for duplex printing (long or short edge).
+   - Enable "Various amounts from 'qty' col" for per-card quantities and set a global multiplier.
+   - Check "Truncate overflow text" to shorten long text with `...`.
+   - Use "Create Business Card..." to make a new simple card file.
+   - Click **Start** to generate the PDF, or **Exit** to close the app.
 
 ## File Format
 
- Excel/CSV file should have at least two columns for the front and back of the cards.
-  Optional columns for index and notes can be included.
+The input file should have at least two columns for the front and back of the cards. An optional `qty` column can specify card quantities (non-numeric or invalid values default to 1).
 
-| Front      | Back       | Index | Notes      |
-|------------|------------|-------|------------|
-| Question 1 | Answer 1   | 1     | Example    |
-| Question 2 | Answer 2   | 2     | Optional   |
+| Front      | Back       | qty |
+|------------|------------|-----|
+| Question 1 | Answer 1   | 2   |
+| Question 2 | Answer 2   | 1   |
 
 ## Settings
 
 - **Cards per Row:** Number of cards across each page.
+- **Card Size:** Width x Height in millimeters (e.g., `85.6x55.0` for business cards).
 - **Page Size:** Width x Height in millimeters (e.g., `210x297` for A4).
 - **Margins:** Top, Bottom, Left, Right in millimeters (comma-separated).
-- **Color Bars:** Add colored bars to top and/or bottom of cards for organization.
-- **Truncate:** If enabled, text that doesn't fit will be shortened with `...`.
+- **Font Details:** Font size, family (Helvetica, Times-Roman, Courier), style (Normal, Bold, Italic, BoldItalic) for front and back.
+- **Colors:** Text, background, and optional top/bottom color bars for front and back.
+- **Flip Mode:** Long or short edge for duplex printing alignment.
+- **Truncate:** If enabled, text that doesn't fit is shortened with `...`.
+- **Quantity:** Use `qty` column for per-card amounts and a global multiplier.
 
-Settings are saved in `flashcard_gui_settings.json` and prefilled on next use.
+Settings are saved in `cardhatch_settings.json` and prefilled on next use.
 
 ## Troubleshooting
 
-- **Missing Columns:** Ensure your file has the correct column names.
-- **Text Overflow:** Enable "Truncate" or shorten your card content.
+- **Missing Columns:** Verify column names match the file headers.
+- **Text Overflow:** Enable "Truncate" or shorten content.
 - **Output Not Created:** Check file paths and permissions.
+- **Invalid Quantities:** Non-numeric or invalid `qty` values default to 1 with warnings.
+- **Alignment Issues:** Ensure correct flip mode for your printer.
+- **ODS Files:** Verify multi-line text renders correctly due to format variability.
+- Check `cardhatch.log` for detailed error messages.
 
 ## License
 
@@ -88,4 +119,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-

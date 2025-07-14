@@ -125,3 +125,18 @@ frame_buttons.columnconfigure(4, weight=1) # right spacer
 
 - prompt 18:
     -remove arial
+
+## 20250714
+
+-implement this option:
+    - popup to create business card file
+        - option to load previous file
+        - 2 text input fields, for front and back 
+        - field for filename 
+        - save in csv format
+        - [later, other formats?]
+        - 'cancel' and 'save' buttons
+    -adjust the popup code for a checkbox to affirm loading the new file in the main app on
+        saving, but only save the card file if unchecked, and return to main app with no
+        change to any previous file settings 
+    -label the popup 'Create business card'
