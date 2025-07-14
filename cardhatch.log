@@ -229,3 +229,52 @@
 2025-07-14 16:37:56,643 - INFO - Column entries updated, front: 'Front', back: 'Back'
 2025-07-14 16:37:56,643 - INFO - GUI initialization complete
 2025-07-14 16:39:21,903 - INFO - Application closed
+2025-07-14 18:15:50,802 - INFO - Loading settings from cardhatch_settings.json
+2025-07-14 18:15:50,802 - INFO - Settings loaded successfully
+2025-07-14 18:15:50,802 - INFO - Starting Flashcard PDF Generator application
+2025-07-14 18:15:50,854 - INFO - Initializing FlashcardApp GUI
+2025-07-14 18:15:50,861 - INFO - Setting column entries state to normal
+2025-07-14 18:15:50,862 - INFO - Restored front column to 'Front', back column to 'Back'
+2025-07-14 18:15:50,988 - INFO - Column entries updated, front: 'Front', back: 'Back'
+2025-07-14 18:15:50,989 - INFO - GUI initialization complete
+2025-07-14 18:15:53,225 - INFO - Application closed
+2025-07-14 18:15:59,552 - INFO - Loading settings from cardhatch_settings.json
+2025-07-14 18:15:59,552 - INFO - Settings loaded successfully
+2025-07-14 18:15:59,552 - INFO - Starting Flashcard PDF Generator application
+2025-07-14 18:15:59,582 - INFO - Initializing FlashcardApp GUI
+2025-07-14 18:15:59,591 - INFO - Setting column entries state to normal
+2025-07-14 18:15:59,591 - INFO - Restored front column to 'Front', back column to 'Back'
+2025-07-14 18:15:59,778 - INFO - Column entries updated, front: 'Front', back: 'Back'
+2025-07-14 18:15:59,778 - INFO - GUI initialization complete
+2025-07-14 18:29:43,756 - INFO - Loading settings from cardhatch_settings.json
+2025-07-14 18:29:43,769 - INFO - Settings loaded successfully
+2025-07-14 18:29:43,769 - INFO - Starting Flashcard PDF Generator application
+2025-07-14 18:29:43,809 - INFO - Initializing FlashcardApp GUI
+2025-07-14 18:29:43,815 - INFO - Setting column entries state to normal
+2025-07-14 18:29:43,816 - INFO - Restored front column to 'Front', back column to 'Back'
+2025-07-14 18:29:43,983 - INFO - Column entries updated, front: 'Front', back: 'Back'
+2025-07-14 18:29:43,983 - INFO - GUI initialization complete
+2025-07-14 18:29:50,278 - INFO - Opening color picker for front background color
+2025-07-14 18:29:53,367 - INFO - Selected front background color: #47dffa
+2025-07-14 18:29:55,058 - INFO - Opening color picker for back text color
+2025-07-14 18:29:58,311 - INFO - Selected back text color: #0000ff
+2025-07-14 18:30:07,939 - INFO - Opening color picker for back top bar
+2025-07-14 18:30:10,016 - INFO - Selected back top bar color: #63999c
+2025-07-14 18:30:10,798 - INFO - Opening color picker for back bottom bar
+2025-07-14 18:30:13,596 - INFO - Selected back bottom bar color: #d3992c
+2025-07-14 18:30:14,757 - INFO - Opening color picker for front top bar
+2025-07-14 18:30:17,436 - INFO - Selected front top bar color: #c239c6
+2025-07-14 18:31:50,189 - INFO - Starting PDF generation process
+2025-07-14 18:31:50,190 - INFO - Settings saved to cardhatch_settings.json
+2025-07-14 18:31:50,190 - INFO - Reading input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-csv.csv
+2025-07-14 18:31:50,201 - INFO - Read 3 rows with 3 columns
+2025-07-14 18:31:51,755 - INFO - Starting PDF generation
+2025-07-14 18:33:03,809 - INFO - Loading settings from cardhatch_settings.json
+2025-07-14 18:33:03,815 - INFO - Settings loaded successfully
+2025-07-14 18:33:03,816 - INFO - Starting Flashcard PDF Generator application
+2025-07-14 18:33:03,846 - INFO - Initializing FlashcardApp GUI
+2025-07-14 18:33:03,853 - INFO - Setting column entries state to normal
+2025-07-14 18:33:03,853 - INFO - Restored front column to 'Front', back column to 'Back'
+2025-07-14 18:33:04,033 - INFO - Column entries updated, front: 'Front', back: 'Back'
+2025-07-14 18:33:04,033 - INFO - GUI initialization complete
+2025-07-14 18:33:05,553 - INFO - Application closed

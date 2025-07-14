@@ -1,5 +1,11 @@
 # cardhatch
 
+## 0.8.0
+
+### Minor Changes
+
+- enable colors+fonts for both Front and Back
+
 ## 0.7.0
 
 ### Minor Changes

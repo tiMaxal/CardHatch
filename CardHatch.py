@@ -8,15 +8,25 @@ pip install pandas reportlab openpyxl
 """
 Flashcard PDF Generator
 
-This script creates a Tkinter-based GUI application that generates a double-sided flashcard PDF from a CSV, Excel, or ODS file.
-The application allows users to select an input file (showing CSV, Excel, and ODS files simultaneously by default), specify column
-names for front and back content (with an option to autofill from the first two columns), card layout, page size, margins, color bars,
-flip mode for duplex printing, font size, font family (including Arial), font style, text color, variable quantities via a 'qty' column,
-and a global quantity multiplier limited to 4 digits. Cards and text are centered, and front/back pages are aligned for duplex printing.
-The GUI is organized into sections, is resizable, and includes a vertical scrollbar on the right to access all elements if they exceed
-the window height. All elements, including Start and Exit buttons, are visible on window open. Settings are saved to a JSON file for
-persistence. Comprehensive logging tracks all stages. Empty, non-numeric, non-integer, or non-positive 'qty' values default to 1, with
-user notification. Text in cells can include carriage returns (CR, LF, or CRLF) for multi-line formatting, respected in the output PDF.
+This script creates a Tkinter-based GUI application that
+ generates a double-sided flashcard PDF from a CSV, Excel, or ODS file.
+The application allows users to select an input file 
+ (showing CSV, Excel, and ODS files simultaneously by default), specify column
+  names for front and back content (with an option to autofill from the first two columns),
+    card layout, page size, margins, color bars, flip mode for duplex printing, font size,
+     font family (including Arial), font style, text color, background color, variable quantities via a 'qty' column,
+      and a global quantity multiplier limited to 4 digits. Cards and text are centered,
+        and front/back pages are aligned for duplex printing.
+The GUI is organized into sections, is resizable, and includes a vertical scrollbar on the right
+ to access all elements if they exceed the window height. The 'Colors' and 'Font Details' sections
+  are split into two equal parts for front and back, with options for text color, top/bottom color bars,
+   background color, font size, family, and style for each side.
+All elements, including Start and Exit buttons, are visible on window open.
+Settings are saved to a JSON file for persistence.
+Comprehensive logging tracks all stages.
+Empty, non-numeric, non-integer, or non-positive 'qty' values default to 1, with user notification.
+Text in cells can include carriage returns (CR, LF, or CRLF) for multi-line formatting,
+ respected in the output PDF.
 
 Dependencies:
 - pandas
@@ -69,16 +79,26 @@ DEFAULT_SETTINGS = {
     "card_height": 55.0,
     "page_size": "210x297",
     "margins": "10,10,10,10",
-    "color_bar_top": False,
-    "color_bar_bottom": False,
-    "color_bar_top_color": "#FF0000",
-    "color_bar_bottom_color": "#0000FF",
+    "front_color_bar_top": False,
+    "front_color_bar_bottom": False,
+    "front_color_bar_top_color": "#FF0000",
+    "front_color_bar_bottom_color": "#0000FF",
+    "front_background_color": "#FFFFFF",
+    "back_color_bar_top": False,
+    "back_color_bar_bottom": False,
+    "back_color_bar_top_color": "#FF0000",
+    "back_color_bar_bottom_color": "#0000FF",
+    "back_background_color": "#FFFFFF",
     "truncate": False,
     "flip_mode": "long",
-    "font_size": 12,
-    "font_family": "Helvetica",
-    "font_style": "Normal",
-    "text_color": "#000000",
+    "front_font_size": 12,
+    "front_font_family": "Helvetica",
+    "front_font_style": "Normal",
+    "front_text_color": "#000000",
+    "back_font_size": 12,
+    "back_font_family": "Helvetica",
+    "back_font_style": "Normal",
+    "back_text_color": "#000000",
     "use_qty_column": True,
     "quantity_multiplier": 1,
     "autofill_columns": False,
@@ -265,8 +285,9 @@ class FlashcardApp(tk.Tk):
     Tkinter GUI application for generating printable, double-sided flashcard PDFs from spreadsheet data.
 
     Provides fields for input file selection, column names (with autofill option), card layout, page size, margins,
-    color bars, flip mode, font size, font family, font style, text color, variable quantities, and a global quantity
-    multiplier (limited to 4 digits). GUI is organized into sections, is resizable, and includes a vertical scrollbar.
+    color bars, flip mode, font size, font family, font style, text color, background color, variable quantities, and
+    a global quantity multiplier (limited to 4 digits). The 'Colors' and 'Font Details' sections are split into front
+    and back subsections. GUI is organized into sections, is resizable, and includes a vertical scrollbar.
     All elements, including Start and Exit buttons, are visible on window open. Cards and text are centered, and
     front/back pages are aligned for duplex printing.
     """
@@ -276,7 +297,7 @@ class FlashcardApp(tk.Tk):
         super().__init__()
         logger.info("Initializing FlashcardApp GUI")
         self.title("Flashcard PDF Generator")
-        self.geometry("750x750")  # Increased height to ensure buttons visibility
+        self.geometry("750x850")  # Increased height again to ensure buttons visibility
         self.resizable(True, True)  # Enable window resizing
 
         # Create canvas and scrollbar
@@ -409,91 +430,258 @@ class FlashcardApp(tk.Tk):
         # Section: Font Details
         frame_font = tk.LabelFrame(frame_main, text="Font Details", padx=5, pady=5)
         frame_font.grid(row=2, column=0, sticky=tk.EW, pady=5)
+        frame_font.columnconfigure(0, weight=1)
         frame_font.columnconfigure(1, weight=1)
 
-        tk.Label(frame_font, text="Font Size:").grid(row=0, column=0, sticky=tk.W)
-        self.entry_font_size = tk.Entry(frame_font)
-        self.entry_font_size.grid(row=0, column=1, sticky=tk.EW)
-        self.entry_font_size.insert(0, str(settings.get("font_size", 12)))
+        # Front Font Subframe
+        frame_font_front = tk.LabelFrame(frame_font, text="Front", padx=5, pady=5)
+        frame_font_front.grid(row=0, column=0, sticky=tk.EW, padx=5)
+        frame_font_front.columnconfigure(1, weight=1)
 
-        tk.Label(frame_font, text="Font Family:").grid(row=1, column=0, sticky=tk.W)
-        self.font_family_var = tk.StringVar(
-            value=settings.get("font_family", "Helvetica")
+        tk.Label(frame_font_front, text="Font Size:").grid(row=0, column=0, sticky=tk.W)
+        self.entry_front_font_size = tk.Entry(frame_font_front)
+        self.entry_front_font_size.grid(row=0, column=1, sticky=tk.EW)
+        self.entry_front_font_size.insert(0, str(settings.get("front_font_size", 12)))
+
+        tk.Label(frame_font_front, text="Font Family:").grid(row=1, column=0, sticky=tk.W)
+        self.front_font_family_var = tk.StringVar(
+            value=settings.get("front_font_family", "Helvetica")
         )
         font_families = ["Helvetica", "Times-Roman", "Courier", "Arial"]
-        tk.OptionMenu(frame_font, self.font_family_var, *font_families).grid(
+        tk.OptionMenu(frame_font_front, self.front_font_family_var, *font_families).grid(
             row=1, column=1, sticky=tk.EW
         )
 
-        tk.Label(frame_font, text="Font Style:").grid(row=2, column=0, sticky=tk.W)
-        self.font_style_var = tk.StringVar(value=settings.get("font_style", "Normal"))
+        tk.Label(frame_font_front, text="Font Style:").grid(row=2, column=0, sticky=tk.W)
+        self.front_font_style_var = tk.StringVar(
+            value=settings.get("front_font_style", "Normal")
+        )
         font_styles = ["Normal", "Bold", "Italic", "BoldItalic"]
-        tk.OptionMenu(frame_font, self.font_style_var, *font_styles).grid(
+        tk.OptionMenu(frame_font_front, self.front_font_style_var, *font_styles).grid(
+            row=2, column=1, sticky=tk.EW
+        )
+
+        # Back Font Subframe
+        frame_font_back = tk.LabelFrame(frame_font, text="Back", padx=5, pady=5)
+        frame_font_back.grid(row=0, column=1, sticky=tk.EW, padx=5)
+        frame_font_back.columnconfigure(1, weight=1)
+
+        tk.Label(frame_font_back, text="Font Size:").grid(row=0, column=0, sticky=tk.W)
+        self.entry_back_font_size = tk.Entry(frame_font_back)
+        self.entry_back_font_size.grid(row=0, column=1, sticky=tk.EW)
+        self.entry_back_font_size.insert(0, str(settings.get("back_font_size", 12)))
+
+        tk.Label(frame_font_back, text="Font Family:").grid(row=1, column=0, sticky=tk.W)
+        self.back_font_family_var = tk.StringVar(
+            value=settings.get("back_font_family", "Helvetica")
+        )
+        tk.OptionMenu(frame_font_back, self.back_font_family_var, *font_families).grid(
+            row=1, column=1, sticky=tk.EW
+        )
+
+        tk.Label(frame_font_back, text="Font Style:").grid(row=2, column=0, sticky=tk.W)
+        self.back_font_style_var = tk.StringVar(
+            value=settings.get("back_font_style", "Normal")
+        )
+        tk.OptionMenu(frame_font_back, self.back_font_style_var, *font_styles).grid(
             row=2, column=1, sticky=tk.EW
         )
 
         # Section: Colors
         frame_colors = tk.LabelFrame(frame_main, text="Colors", padx=5, pady=5)
         frame_colors.grid(row=3, column=0, sticky=tk.EW, pady=5)
+        frame_colors.columnconfigure(0, weight=1)
         frame_colors.columnconfigure(1, weight=1)
 
-        tk.Label(frame_colors, text="Text Color:").grid(row=0, column=0, sticky=tk.W)
-        self.text_color_var = tk.StringVar(value=settings.get("text_color", "#000000"))
-        btn_text_color = tk.Button(
-            frame_colors, text="Pick Text Color", command=self.pick_text_color
+        # Front Colors Subframe
+        frame_colors_front = tk.LabelFrame(frame_colors, text="Front", padx=5, pady=5)
+        frame_colors_front.grid(row=0, column=0, sticky=tk.EW, padx=5)
+        frame_colors_front.columnconfigure(1, weight=1)
+        frame_colors_front.columnconfigure(2, weight=0)
+        frame_colors_front.columnconfigure(3, weight=0)
+
+        tk.Label(frame_colors_front, text="Text Color:").grid(row=0, column=0, sticky=tk.W)
+        self.front_text_color_var = tk.StringVar(
+            value=settings.get("front_text_color", "#000000")
         )
-        btn_text_color.grid(row=0, column=1, sticky=tk.W)
-        self.lbl_text_color = tk.Label(
-            frame_colors,
-            textvariable=self.text_color_var,
-            bg=self.text_color_var.get(),
+        self.lbl_front_text_color = tk.Label(
+            frame_colors_front,
+            textvariable=self.front_text_color_var,
+            bg=self.front_text_color_var.get(),
             width=10,
         )
-        self.lbl_text_color.grid(row=0, column=2, sticky=tk.W)
+        self.lbl_front_text_color.grid(row=0, column=1, sticky=tk.W)
+        btn_front_text_color = tk.Button(
+            frame_colors_front,
+            text="Pick Text Color",
+            command=self.pick_front_text_color,
+        )
+        btn_front_text_color.grid(row=0, column=2, sticky=tk.W)
 
-        self.color_bar_top_var = tk.BooleanVar(
-            value=settings.get("color_bar_top", False)
+        tk.Label(frame_colors_front, text="Background Color:").grid(
+            row=1, column=0, sticky=tk.W
         )
-        tk.Checkbutton(
-            frame_colors, text="Add Color Bar Top", variable=self.color_bar_top_var
-        ).grid(row=1, column=0, sticky=tk.W)
-        btn_top_color = tk.Button(
-            frame_colors, text="Pick Top Color", command=self.pick_top_color
+        self.front_background_color_var = tk.StringVar(
+            value=settings.get("front_background_color", "#FFFFFF")
         )
-        btn_top_color.grid(row=1, column=1, sticky=tk.W)
-        self.color_bar_top_color = tk.StringVar(
-            value=settings.get("color_bar_top_color", "#FF0000")
-        )
-        self.lbl_top_color = tk.Label(
-            frame_colors,
-            textvariable=self.color_bar_top_color,
-            bg=self.color_bar_top_color.get(),
+        self.lbl_front_background_color = tk.Label(
+            frame_colors_front,
+            textvariable=self.front_background_color_var,
+            bg=self.front_background_color_var.get(),
             width=10,
         )
-        self.lbl_top_color.grid(row=1, column=2, sticky=tk.W)
+        self.lbl_front_background_color.grid(row=1, column=1, sticky=tk.W)
+        btn_front_background_color = tk.Button(
+            frame_colors_front,
+            text="Pick Background Color",
+            command=self.pick_front_background_color,
+        )
+        btn_front_background_color.grid(row=1, column=2, sticky=tk.W)
 
-        self.color_bar_bottom_var = tk.BooleanVar(
-            value=settings.get("color_bar_bottom", False)
+        self.front_color_bar_top_var = tk.BooleanVar(
+            value=settings.get("front_color_bar_top", False)
         )
         tk.Checkbutton(
-            frame_colors,
-            text="Add Color Bar Bottom",
-            variable=self.color_bar_bottom_var,
+            frame_colors_front,
+            text="Add Color Bar Top",
+            variable=self.front_color_bar_top_var,
         ).grid(row=2, column=0, sticky=tk.W)
-        btn_bottom_color = tk.Button(
-            frame_colors, text="Pick Bottom Color", command=self.pick_bottom_color
+        self.front_color_bar_top_color = tk.StringVar(
+            value=settings.get("front_color_bar_top_color", "#FF0000")
         )
-        btn_bottom_color.grid(row=2, column=1, sticky=tk.W)
-        self.color_bar_bottom_color = tk.StringVar(
-            value=settings.get("color_bar_bottom_color", "#0000FF")
-        )
-        self.lbl_bottom_color = tk.Label(
-            frame_colors,
-            textvariable=self.color_bar_bottom_color,
-            bg=self.color_bar_bottom_color.get(),
+        self.lbl_front_top_color = tk.Label(
+            frame_colors_front,
+            textvariable=self.front_color_bar_top_color,
+            bg=self.front_color_bar_top_color.get(),
             width=10,
         )
-        self.lbl_bottom_color.grid(row=2, column=2, sticky=tk.W)
+        self.lbl_front_top_color.grid(row=2, column=1, sticky=tk.W)
+        btn_front_top_color = tk.Button(
+            frame_colors_front,
+            text="Pick Top Color",
+            command=self.pick_front_top_color,
+        )
+        btn_front_top_color.grid(row=2, column=2, sticky=tk.W)
+
+        self.front_color_bar_bottom_var = tk.BooleanVar(
+            value=settings.get("front_color_bar_bottom", False)
+        )
+        tk.Checkbutton(
+            frame_colors_front,
+            text="Add Color Bar Bottom",
+            variable=self.front_color_bar_bottom_var,
+        ).grid(row=3, column=0, sticky=tk.W)
+        self.front_color_bar_bottom_color = tk.StringVar(
+            value=settings.get("front_color_bar_bottom_color", "#0000FF")
+        )
+        self.lbl_front_bottom_color = tk.Label(
+            frame_colors_front,
+            textvariable=self.front_color_bar_bottom_color,
+            bg=self.front_color_bar_bottom_color.get(),
+            width=10,
+        )
+        self.lbl_front_bottom_color.grid(row=3, column=1, sticky=tk.W)
+        btn_front_bottom_color = tk.Button(
+            frame_colors_front,
+            text="Pick Bottom Color",
+            command=self.pick_front_bottom_color,
+        )
+        btn_front_bottom_color.grid(row=3, column=2, sticky=tk.W)
+
+        # Back Colors Subframe
+        frame_colors_back = tk.LabelFrame(frame_colors, text="Back", padx=5, pady=5)
+        frame_colors_back.grid(row=0, column=1, sticky=tk.EW, padx=5)
+        frame_colors_back.columnconfigure(1, weight=1)
+        frame_colors_back.columnconfigure(2, weight=0)
+        frame_colors_back.columnconfigure(3, weight=0)
+
+        tk.Label(frame_colors_back, text="Text Color:").grid(row=0, column=0, sticky=tk.W)
+        self.back_text_color_var = tk.StringVar(
+            value=settings.get("back_text_color", "#000000")
+        )
+        self.lbl_back_text_color = tk.Label(
+            frame_colors_back,
+            textvariable=self.back_text_color_var,
+            bg=self.back_text_color_var.get(),
+            width=10,
+        )
+        self.lbl_back_text_color.grid(row=0, column=1, sticky=tk.W)
+        btn_back_text_color = tk.Button(
+            frame_colors_back,
+            text="Pick Text Color",
+            command=self.pick_back_text_color,
+        )
+        btn_back_text_color.grid(row=0, column=2, sticky=tk.W)
+
+        tk.Label(frame_colors_back, text="Background Color:").grid(
+            row=1, column=0, sticky=tk.W
+        )
+        self.back_background_color_var = tk.StringVar(
+            value=settings.get("back_background_color", "#FFFFFF")
+        )
+        self.lbl_back_background_color = tk.Label(
+            frame_colors_back,
+            textvariable=self.back_background_color_var,
+            bg=self.back_background_color_var.get(),
+            width=10,
+        )
+        self.lbl_back_background_color.grid(row=1, column=1, sticky=tk.W)
+        btn_back_background_color = tk.Button(
+            frame_colors_back,
+            text="Pick Background Color",
+            command=self.pick_back_background_color,
+        )
+        btn_back_background_color.grid(row=1, column=2, sticky=tk.W)
+
+        self.back_color_bar_top_var = tk.BooleanVar(
+            value=settings.get("back_color_bar_top", False)
+        )
+        tk.Checkbutton(
+            frame_colors_back,
+            text="Add Color Bar Top",
+            variable=self.back_color_bar_top_var,
+        ).grid(row=2, column=0, sticky=tk.W)
+        self.back_color_bar_top_color = tk.StringVar(
+            value=settings.get("back_color_bar_top_color", "#FF0000")
+        )
+        self.lbl_back_top_color = tk.Label(
+            frame_colors_back,
+            textvariable=self.back_color_bar_top_color,
+            bg=self.back_color_bar_top_color.get(),
+            width=10,
+        )
+        self.lbl_back_top_color.grid(row=2, column=1, sticky=tk.W)
+        btn_back_top_color = tk.Button(
+            frame_colors_back,
+            text="Pick Top Color",
+            command=self.pick_back_top_color,
+        )
+        btn_back_top_color.grid(row=2, column=2, sticky=tk.W)
+
+        self.back_color_bar_bottom_var = tk.BooleanVar(
+            value=settings.get("back_color_bar_bottom", False)
+        )
+        tk.Checkbutton(
+            frame_colors_back,
+            text="Add Color Bar Bottom",
+            variable=self.back_color_bar_bottom_var,
+        ).grid(row=3, column=0, sticky=tk.W)
+        self.back_color_bar_bottom_color = tk.StringVar(
+            value=settings.get("back_color_bar_bottom_color", "#0000FF")
+        )
+        self.lbl_back_bottom_color = tk.Label(
+            frame_colors_back,
+            textvariable=self.back_color_bar_bottom_color,
+            bg=self.back_color_bar_bottom_color.get(),
+            width=10,
+        )
+        self.lbl_back_bottom_color.grid(row=3, column=1, sticky=tk.W)
+        btn_back_bottom_color = tk.Button(
+            frame_colors_back,
+            text="Pick Bottom Color",
+            command=self.pick_back_bottom_color,
+        )
+        btn_back_bottom_color.grid(row=3, column=2, sticky=tk.W)
 
         # Section: Manipulators
         frame_manipulators = tk.LabelFrame(
@@ -749,32 +937,77 @@ class FlashcardApp(tk.Tk):
             self.entry_output.delete(0, tk.END)
             self.entry_output.insert(0, file_path)
 
-    def pick_top_color(self):
-        """Open a color picker dialog for the top color bar."""
-        logger.info("Opening color picker for top bar")
-        color = colorchooser.askcolor(title="Pick Top Bar Color")[1]
+    def pick_front_text_color(self):
+        """Open a color picker dialog for the front text color."""
+        logger.info("Opening color picker for front text color")
+        color = colorchooser.askcolor(title="Pick Front Text Color")[1]
         if color:
-            self.color_bar_top_color.set(color)
-            self.lbl_top_color.config(bg=color)
-            logger.info(f"Selected top bar color: {color}")
+            self.front_text_color_var.set(color)
+            self.lbl_front_text_color.config(bg=color)
+            logger.info(f"Selected front text color: {color}")
 
-    def pick_bottom_color(self):
-        """Open a color picker dialog for the bottom color bar."""
-        logger.info("Opening color picker for bottom bar")
-        color = colorchooser.askcolor(title="Pick Bottom Bar Color")[1]
+    def pick_front_background_color(self):
+        """Open a color picker dialog for the front background color."""
+        logger.info("Opening color picker for front background color")
+        color = colorchooser.askcolor(title="Pick Front Background Color")[1]
         if color:
-            self.color_bar_bottom_color.set(color)
-            self.lbl_bottom_color.config(bg=color)
-            logger.info(f"Selected bottom bar color: {color}")
+            self.front_background_color_var.set(color)
+            self.lbl_front_background_color.config(bg=color)
+            logger.info(f"Selected front background color: {color}")
 
-    def pick_text_color(self):
-        """Open a color picker dialog for the text color."""
-        logger.info("Opening color picker for text color")
-        color = colorchooser.askcolor(title="Pick Text Color")[1]
+    def pick_front_top_color(self):
+        """Open a color picker dialog for the front top color bar."""
+        logger.info("Opening color picker for front top bar")
+        color = colorchooser.askcolor(title="Pick Front Top Bar Color")[1]
         if color:
-            self.text_color_var.set(color)
-            self.lbl_text_color.config(bg=color)
-            logger.info(f"Selected text color: {color}")
+            self.front_color_bar_top_color.set(color)
+            self.lbl_front_top_color.config(bg=color)
+            logger.info(f"Selected front top bar color: {color}")
+
+    def pick_front_bottom_color(self):
+        """Open a color picker dialog for the front bottom color bar."""
+        logger.info("Opening color picker for front bottom bar")
+        color = colorchooser.askcolor(title="Pick Front Bottom Bar Color")[1]
+        if color:
+            self.front_color_bar_bottom_color.set(color)
+            self.lbl_front_bottom_color.config(bg=color)
+            logger.info(f"Selected front bottom bar color: {color}")
+
+    def pick_back_text_color(self):
+        """Open a color picker dialog for the back text color."""
+        logger.info("Opening color picker for back text color")
+        color = colorchooser.askcolor(title="Pick Back Text Color")[1]
+        if color:
+            self.back_text_color_var.set(color)
+            self.lbl_back_text_color.config(bg=color)
+            logger.info(f"Selected back text color: {color}")
+
+    def pick_back_background_color(self):
+        """Open a color picker dialog for the back background color."""
+        logger.info("Opening color picker for back background color")
+        color = colorchooser.askcolor(title="Pick Back Background Color")[1]
+        if color:
+            self.back_background_color_var.set(color)
+            self.lbl_back_background_color.config(bg=color)
+            logger.info(f"Selected back background color: {color}")
+
+    def pick_back_top_color(self):
+        """Open a color picker dialog for the back top color bar."""
+        logger.info("Opening color picker for back top bar")
+        color = colorchooser.askcolor(title="Pick Back Top Bar Color")[1]
+        if color:
+            self.back_color_bar_top_color.set(color)
+            self.lbl_back_top_color.config(bg=color)
+            logger.info(f"Selected back top bar color: {color}")
+
+    def pick_back_bottom_color(self):
+        """Open a color picker dialog for the back bottom color bar."""
+        logger.info("Opening color picker for back bottom bar")
+        color = colorchooser.askcolor(title="Pick Back Bottom Bar Color")[1]
+        if color:
+            self.back_color_bar_bottom_color.set(color)
+            self.lbl_back_bottom_color.config(bg=color)
+            logger.info(f"Selected back bottom bar color: {color}")
 
     def start_process(self):
         """
@@ -793,7 +1026,8 @@ class FlashcardApp(tk.Tk):
             settings["card_height"] = float(self.entry_card_height.get())
             settings["page_size"] = self.entry_page_size.get()
             settings["margins"] = self.entry_margins.get()
-            settings["font_size"] = float(self.entry_font_size.get())
+            settings["front_font_size"] = float(self.entry_front_font_size.get())
+            settings["back_font_size"] = float(self.entry_back_font_size.get())
             multiplier = self.entry_quantity_multiplier.get().strip()
             if multiplier and len(multiplier) > 4:
                 raise ValueError("Quantity multiplier cannot exceed 4 digits")
@@ -804,15 +1038,24 @@ class FlashcardApp(tk.Tk):
             logger.error(f"Invalid input in numeric fields: {e}")
             messagebox.showerror("Error", f"Invalid input in numeric fields: {e}")
             return
-        settings["color_bar_top"] = self.color_bar_top_var.get()
-        settings["color_bar_bottom"] = self.color_bar_bottom_var.get()
-        settings["color_bar_top_color"] = self.color_bar_top_color.get()
-        settings["color_bar_bottom_color"] = self.color_bar_bottom_color.get()
+        settings["front_color_bar_top"] = self.front_color_bar_top_var.get()
+        settings["front_color_bar_bottom"] = self.front_color_bar_bottom_var.get()
+        settings["front_color_bar_top_color"] = self.front_color_bar_top_color.get()
+        settings["front_color_bar_bottom_color"] = self.front_color_bar_bottom_color.get()
+        settings["front_background_color"] = self.front_background_color_var.get()
+        settings["back_color_bar_top"] = self.back_color_bar_top_var.get()
+        settings["back_color_bar_bottom"] = self.back_color_bar_bottom_var.get()
+        settings["back_color_bar_top_color"] = self.back_color_bar_top_color.get()
+        settings["back_color_bar_bottom_color"] = self.back_color_bar_bottom_color.get()
+        settings["back_background_color"] = self.back_background_color_var.get()
         settings["truncate"] = self.truncate_var.get()
         settings["flip_mode"] = self.flip_mode_var.get()
-        settings["font_family"] = self.font_family_var.get()
-        settings["font_style"] = self.font_style_var.get()
-        settings["text_color"] = self.text_color_var.get()
+        settings["front_font_family"] = self.front_font_family_var.get()
+        settings["front_font_style"] = self.front_font_style_var.get()
+        settings["front_text_color"] = self.front_text_color_var.get()
+        settings["back_font_family"] = self.back_font_family_var.get()
+        settings["back_font_style"] = self.back_font_style_var.get()
+        settings["back_text_color"] = self.back_text_color_var.get()
 
         try:
             with open(SETTINGS_FILE, "w") as f:
@@ -975,10 +1218,16 @@ class FlashcardApp(tk.Tk):
         cards_per_row = int(settings["cards_per_row"])
         card_width = float(settings["card_width"])
         card_height = float(settings["card_height"])
-        font_size = float(settings["font_size"])
-        font_family = settings["font_family"]
-        font_style = settings["font_style"]
-        text_color = settings["text_color"]
+        front_font_size = float(settings["front_font_size"])
+        back_font_size = float(settings["back_font_size"])
+        front_font_family = settings["front_font_family"]
+        front_font_style = settings["front_font_style"]
+        back_font_family = settings["back_font_family"]
+        back_font_style = settings["back_font_style"]
+        front_text_color = settings["front_text_color"]
+        back_text_color = settings["back_text_color"]
+        front_background_color = settings["front_background_color"]
+        back_background_color = settings["back_background_color"]
         use_qty_column = settings["use_qty_column"]
         quantity_multiplier = int(settings["quantity_multiplier"])
 
@@ -1000,7 +1249,8 @@ class FlashcardApp(tk.Tk):
             ("Arial", "Italic"): "Helvetica-Oblique",
             ("Arial", "BoldItalic"): "Helvetica-BoldOblique",
         }
-        font_name = font_map.get((font_family, font_style), "Helvetica")
+        front_font_name = font_map.get((front_font_family, front_font_style), "Helvetica")
+        back_font_name = font_map.get((back_font_family, back_font_style), "Helvetica")
 
         page_size_pt = (mm(page_w), mm(page_h))
         card_width_pt = mm(card_width)
@@ -1028,7 +1278,8 @@ class FlashcardApp(tk.Tk):
 
         output_file = settings.get("output_file", "flashcards.pdf")
         c = canvas.Canvas(output_file, pagesize=page_size_pt)
-        line_height = font_size * 1.2
+        front_line_height = front_font_size * 1.2
+        back_line_height = back_font_size * 1.2
 
         card_indices = []
         for idx in range(len(data)):
@@ -1060,34 +1311,38 @@ class FlashcardApp(tk.Tk):
 
                 if data_idx is not None:
                     row = data.iloc[data_idx]
-                    if settings["color_bar_top"]:
+                    # Draw background
+                    c.setFillColor(HexColor(front_background_color))
+                    c.rect(x, y, card_width_pt, card_height_pt, fill=1, stroke=0)
+                    # Draw color bars
+                    if settings["front_color_bar_top"]:
                         draw_color_bar(
                             x,
                             y + card_height_pt - mm(5),
                             card_width_pt,
                             mm(5),
-                            settings["color_bar_top_color"],
+                            settings["front_color_bar_top_color"],
                         )
-                    if settings["color_bar_bottom"]:
+                    if settings["front_color_bar_bottom"]:
                         draw_color_bar(
                             x,
                             y,
                             card_width_pt,
                             mm(5),
-                            settings["color_bar_bottom_color"],
+                            settings["front_color_bar_bottom_color"],
                         )
 
                     text = str(row.get(settings["front_column"], ""))
                     max_text_height = card_height_pt - mm(8)
-                    if settings["color_bar_top"]:
+                    if settings["front_color_bar_top"]:
                         max_text_height -= mm(5)
-                    if settings["color_bar_bottom"]:
+                    if settings["front_color_bar_bottom"]:
                         max_text_height -= mm(5)
-                    max_lines = int(max_text_height // line_height)
+                    max_lines = int(max_text_height // front_line_height)
                     lines, overflowed = wrap_text(
                         text,
-                        font_name,
-                        font_size,
+                        front_font_name,
+                        front_font_size,
                         card_width_pt - mm(8),
                         max_lines,
                         settings.get("truncate", False),
@@ -1097,14 +1352,14 @@ class FlashcardApp(tk.Tk):
                             f"Text does not fit on card at row {data_idx+1}. Enable 'Truncate' or edit your data."
                         )
 
-                    c.setFont(font_name, font_size)
-                    c.setFillColor(HexColor(text_color))
-                    text_height = len(lines) * line_height
+                    c.setFont(front_font_name, front_font_size)
+                    c.setFillColor(HexColor(front_text_color))
+                    text_height = len(lines) * front_line_height
                     text_y = y + (card_height_pt - text_height) / 2
                     for lidx, line in enumerate(lines):
                         c.drawCentredString(
                             x + card_width_pt / 2,
-                            text_y + text_height - (lidx + 1) * line_height,
+                            text_y + text_height - (lidx + 1) * front_line_height,
                             line,
                         )
 
@@ -1133,34 +1388,38 @@ class FlashcardApp(tk.Tk):
 
                 if data_idx is not None:
                     row = data.iloc[data_idx]
-                    if settings["color_bar_top"]:
+                    # Draw background
+                    c.setFillColor(HexColor(back_background_color))
+                    c.rect(x, y, card_width_pt, card_height_pt, fill=1, stroke=0)
+                    # Draw color bars
+                    if settings["back_color_bar_top"]:
                         draw_color_bar(
                             x,
                             y + card_height_pt - mm(5),
                             card_width_pt,
                             mm(5),
-                            settings["color_bar_top_color"],
+                            settings["back_color_bar_top_color"],
                         )
-                    if settings["color_bar_bottom"]:
+                    if settings["back_color_bar_bottom"]:
                         draw_color_bar(
                             x,
                             y,
                             card_width_pt,
                             mm(5),
-                            settings["color_bar_bottom_color"],
+                            settings["back_color_bar_bottom_color"],
                         )
 
                     text = str(row.get(settings["back_column"], ""))
                     max_text_height = card_height_pt - mm(8)
-                    if settings["color_bar_top"]:
+                    if settings["back_color_bar_top"]:
                         max_text_height -= mm(5)
-                    if settings["color_bar_bottom"]:
+                    if settings["back_color_bar_bottom"]:
                         max_text_height -= mm(5)
-                    max_lines = int(max_text_height // line_height)
+                    max_lines = int(max_text_height // back_line_height)
                     lines, overflowed = wrap_text(
                         text,
-                        font_name,
-                        font_size,
+                        back_font_name,
+                        back_font_size,
                         card_width_pt - mm(8),
                         max_lines,
                         settings.get("truncate", False),
@@ -1170,14 +1429,14 @@ class FlashcardApp(tk.Tk):
                             f"Back text does not fit on card at row {data_idx+1}. Enable 'Truncate' or edit your data."
                         )
 
-                    c.setFont(font_name, font_size)
-                    c.setFillColor(HexColor(text_color))
-                    text_height = len(lines) * line_height
+                    c.setFont(back_font_name, back_font_size)
+                    c.setFillColor(HexColor(back_text_color))
+                    text_height = len(lines) * back_line_height
                     text_y = y + (card_height_pt - text_height) / 2
                     for lidx, line in enumerate(lines):
                         c.drawCentredString(
                             x + card_width_pt / 2,
-                            text_y + text_height - (lidx + 1) * line_height,
+                            text_y + text_height - (lidx + 1) * back_line_height,
                             line,
                         )
 

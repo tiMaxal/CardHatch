@@ -111,3 +111,13 @@ frame_buttons.columnconfigure(4, weight=1) # right spacer
       - font details
       - colors
       - [manipulators]
+
+- prompt 17:
+    - swap color buttons with color indicators [put indicator swatch between description and button]
+    - split 'Colors' section to two equal parts,
+        Front on left and Back on right,
+        duplicate the current 'overall' options for each,
+        and add an option to each for background color;
+    - similarly for 'Fonts'
+
+
