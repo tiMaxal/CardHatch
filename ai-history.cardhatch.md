@@ -95,3 +95,5 @@ default empty 'qty' values to 1 [before multiplier applied],
 
 - prompt 15:
 have CR [and LF] recognised, for formatted multi-line cells
+
+- prompt 16:

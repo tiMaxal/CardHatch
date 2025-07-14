@@ -1,5 +1,11 @@
 # cardhatch
 
+## 0.6.0
+
+### Minor Changes
+
+- have CR [and LF] recognised, for formatted multi-line cells
+
 ## 0.5.1
 
 ### Patch Changes

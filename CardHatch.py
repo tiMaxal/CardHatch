@@ -1,88 +1,4 @@
 """
-MIT License
-
-Copyright (c) 2025 tiMaxal `CardHatch`
-
-
-perplexity-ai; tdwm20250709
-
-prompt 1:
-create py app,
- that is able to format a printable pdf from 2 spreadsheet columns as lists,
-   to business cards [flashcards] with front and back [the 2 lists] aligned
-
-prompt 2:
-provide the code as a gui that accepts values for excel/csv file location,
- column names [incl. extra for 'index' + 'notes'
-   - if possible, being able to add configurable bars top + bottom for color-coding is desired],
-     cards_per_row, page-size and margins [with defaults prefilled first run,
-       and settings file to save current values for next operation];
-
-prompt 3:
-apply grid columns like the following example for equi-spacing 'start' and 'exit'
- buttons at the bottom [and similarly, other entry fields in the main app window] -
-# Configure columns for centering
-frame_buttons.columnconfigure(0, weight=1) # left spacer
-frame_buttons.columnconfigure(1, weight=0) # left button [start]
-frame_buttons.columnconfigure(2, weight=1) # center spacer
-frame_buttons.columnconfigure(3, weight=0) # right button [exit]
-frame_buttons.columnconfigure(4, weight=1) # right spacer
-
-prompt 4:
-add color pickers for the top\bottom bar options
-
-prompt 5:
-- add a field to assign output field [default as origin of excel\csv input]
-- also wrap text content of input columns to fit output of card width and available lines
-     [alert and stop if text overflow, ie out of room - allow 'truncate' checkbox]
-- format output with lines demarking cards, for separation [cutting]
-
-20250710:
-
-create output pdf as front/back pages alternating, for print both sides;
-ensure 'back' cells will align with associated 'front' cells when page is flipped - requires:
-- radio button selection for 'flip long edge' or 'flip short edge'
-- if long, change order of each row
-- if short, invert whole page, but ensure cells will align vertically
-
-
-logic must assess how many cards fit on each page,
- then create a front and a back page for that many cards,
-   then continue to the next amount that fit to the next page,
-     and create those as front and back,
-       forming a final output that alternates front and rear pages,
-         with appropriate alignment
-
-grok-ai:
-centre cards on page [both vertically n horizontally],
- to ensure alignment when flipped during print
-
-centre the text in each card [both vertically and horizontally];
-also provide options to choose Font size, family [and style - bold\italic\etc] by type\dropdown, and colour
-
-provide the complete code, incl full docstrings,
- with good practice logging added to all stages
-   [and include logging to file, in cwd]
-
-remove all controls and references to 'index' and 'notes' columns
-provide complete code, with full logging to file and docstrings
-
-20250711
-
- also function with .ods files
-csv, excel and ods types all be shown at the same time in the picker,
- instead of needing to use a drop-down
-  [and just show 'all' in the drop-down as well]
-
-include a `Various amounts from 'qty' col` checkbox
- to apply diff quantity to certain cards [via column 'qty'],
-   and a `Multiple` value input box to multiply *all* cards by a same amount
-
-default empty 'qty' values to 1 [before multiplier applied],
- and notify user if any [and list which] 'qty' values are empty, not numeric or not positive integers
-"""
-
-"""
 Install Required Packages:
  bash
 pip install pandas reportlab openpyxl
@@ -100,7 +16,8 @@ Cards are centered on the page both horizontally and vertically, with text cente
 Front and back pages are aligned for duplex printing based on the selected flip mode (long or short edge). Settings are saved to a JSON
 file for persistence. Comprehensive logging tracks all stages of the process, with logs written to both console and a file in the
 current working directory. Empty, non-numeric, non-integer, or non-positive 'qty' values are defaulted to 1, and users are notified
-of any such values with row numbers.
+of any such values with row numbers. Text in cells can include carriage returns (CR, LF, or CRLF) for explicit multi-line formatting,
+which are respected in the output PDF.
 
 Dependencies:
 - pandas
@@ -131,7 +48,7 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
         logging.StreamHandler(),  # Console output
-        logging.FileHandler("flashcard_app.log"),  # File output in cwd
+        logging.FileHandler("cardhatch.log"),  # File output in cwd
     ],
 )
 logger = logging.getLogger(__name__)
@@ -162,7 +79,7 @@ DEFAULT_SETTINGS = {
     "quantity_multiplier": 1,
 }
 
-SETTINGS_FILE = "flashcard_gui_settings.json"
+SETTINGS_FILE = "cardhatch_settings.json"
 
 
 def load_settings():
@@ -207,10 +124,15 @@ def mm(val):
 
 def wrap_text(text, font_name, font_size, max_width_pt, max_lines, truncate=False):
     """
-    Wrap text to fit within a maximum width and number of lines.
+    Wrap text to fit within a maximum width and number of lines, respecting explicit newline characters.
+
+    Splits the input text by newline characters (\n or \r\n) to honor explicit line breaks, then applies
+    word wrapping to each segment to ensure it fits within the maximum width. Combines explicit and wrapped
+    lines, ensuring the total does not exceed the maximum number of lines. If truncation is enabled, excess
+    text is truncated with an ellipsis; otherwise, overflow is indicated.
 
     Args:
-        text (str): Text to wrap.
+        text (str): Text to wrap, may contain \n or \r\n for explicit line breaks.
         font_name (str): Font name for text measurement.
         font_size (float): Font size in points.
         max_width_pt (float): Maximum width in points.
@@ -223,36 +145,60 @@ def wrap_text(text, font_name, font_size, max_width_pt, max_lines, truncate=Fals
     logger.debug(
         f"Wrapping text: {text[:50]}... (max_width={max_width_pt}, max_lines={max_lines})"
     )
-    words = str(text).split()
-    lines = []
-    current_line = ""
-    for word in words:
-        test_line = (current_line + " " + word).strip()
-        if stringWidth(test_line, font_name, font_size) <= max_width_pt:
-            current_line = test_line
-        else:
-            if current_line:
-                lines.append(current_line)
-            current_line = word
-            if len(lines) == max_lines:
+    # Convert text to string and handle newlines (\r\n or \n)
+    text = str(text).replace("\r\n", "\n")
+    explicit_lines = text.split("\n")
+    final_lines = []
+    overflowed = False
+
+    # Process each explicit line
+    for line in explicit_lines:
+        if not line.strip():
+            final_lines.append("")  # Preserve empty lines
+            continue
+        # Apply word wrapping to each explicit line
+        words = line.split()
+        current_line = ""
+        for word in words:
+            test_line = (current_line + " " + word).strip()
+            if stringWidth(test_line, font_name, font_size) <= max_width_pt:
+                current_line = test_line
+            else:
+                if current_line:
+                    final_lines.append(current_line)
+                    if len(final_lines) >= max_lines:
+                        if truncate:
+                            final_lines[-1] = (
+                                final_lines[-1][: int(max_width_pt / font_size)] + "..."
+                            )
+                            logger.debug("Text truncated to fit due to max lines")
+                            return final_lines[:max_lines], False
+                        logger.warning("Text overflow detected")
+                        return final_lines[:max_lines], True
+                current_line = word
+        if current_line:
+            final_lines.append(current_line)
+            if len(final_lines) >= max_lines:
                 if truncate:
-                    lines[-1] = lines[-1][: int(max_width_pt / font_size)] + "..."
-                    logger.debug("Text truncated to fit")
-                    return lines, False
+                    final_lines[-1] = (
+                        final_lines[-1][: int(max_width_pt / font_size)] + "..."
+                    )
+                    logger.debug("Text truncated to fit due to max lines")
+                    return final_lines[:max_lines], False
                 logger.warning("Text overflow detected")
-                return lines, True
-    if current_line:
-        lines.append(current_line)
-    if len(lines) > max_lines:
+                return final_lines[:max_lines], True
+
+    if len(final_lines) > max_lines:
         if truncate:
-            lines = lines[:max_lines]
-            lines[-1] = lines[-1][: int(max_width_pt / font_size)] + "..."
-            logger.debug("Text truncated to fit")
-            return lines, False
+            final_lines = final_lines[:max_lines]
+            final_lines[-1] = final_lines[-1][: int(max_width_pt / font_size)] + "..."
+            logger.debug("Text truncated to fit due to max lines")
+            return final_lines, False
         logger.warning("Text overflow detected")
-        return lines[:max_lines], True
-    logger.debug(f"Text wrapped into {len(lines)} lines")
-    return lines, False
+        return final_lines[:max_lines], True
+
+    logger.debug(f"Text wrapped into {len(final_lines)} lines")
+    return final_lines, False
 
 
 def draw_cut_lines(
@@ -334,7 +280,8 @@ class FlashcardApp(tk.Tk):
     the page, and text within each card is centered both horizontally and vertically. Front/back pages are aligned for duplex
     printing based on the flip mode. Settings are saved to a JSON file for persistence. Logging tracks all user interactions
     and processing steps. Empty, non-numeric, non-integer, or non-positive 'qty' values default to 1, and users are notified
-    of any such values with row numbers.
+    of any such values with row numbers. Text in cells can include carriage returns (CR, LF, or CRLF) for explicit multi-line
+    formatting, which are respected in the output PDF.
     """
 
     def __init__(self):
@@ -746,7 +693,7 @@ class FlashcardApp(tk.Tk):
                         f"Row {row + 2}: Non-integer value '{data['qty'].iloc[row]}'"
                     )
 
-                # Check for non-positive values (≤ 0)
+                # Check for non-positive values (??? 0)
                 non_positive_rows = qty_values.index[qty_values <= 0].tolist()
                 for row in non_positive_rows:
                     invalid_rows.append(

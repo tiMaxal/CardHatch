@@ -178,3 +178,21 @@
 2025-07-14 08:20:12,195 - INFO - PDF saved successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.courieritalic.long.mult2.cardhatch.0-5-0.pdf
 2025-07-14 08:20:12,195 - INFO - PDF generated successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.courieritalic.long.mult2.cardhatch.0-5-0.pdf
 2025-07-14 08:20:17,301 - INFO - Application closed
+2025-07-14 15:34:29,937 - INFO - Loading settings from cardhatch_settings.json
+2025-07-14 15:34:29,955 - INFO - Settings loaded successfully
+2025-07-14 15:34:29,955 - INFO - Starting Flashcard PDF Generator application
+2025-07-14 15:34:29,987 - INFO - Initializing FlashcardApp GUI
+2025-07-14 15:34:29,993 - INFO - GUI initialization complete
+2025-07-14 15:35:23,304 - INFO - Starting PDF generation process
+2025-07-14 15:35:23,304 - INFO - Settings saved to cardhatch_settings.json
+2025-07-14 15:35:23,305 - INFO - Reading input file: E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/test.plain-xlsx.xlsx
+2025-07-14 15:35:23,504 - INFO - Successfully read 3 rows from input file
+2025-07-14 15:35:23,504 - INFO - Starting PDF generation
+2025-07-14 15:35:23,504 - INFO - Using font: Courier-Oblique with size 12.0
+2025-07-14 15:35:23,504 - INFO - Calculated grid: 2x5, offsets: 19.400000000000006mm, 11.0mm
+2025-07-14 15:35:23,504 - INFO - Creating PDF at: E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.courieritalic.sh.mult2.cardhatch.0-5-2.pdf
+2025-07-14 15:35:23,504 - INFO - Total cards to print: 6 (use_qty_column=False, multiplier=2)
+2025-07-14 15:35:23,504 - INFO - Generating 1 pages for 6 cards, flip_mode=short
+2025-07-14 15:35:23,519 - INFO - PDF saved successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.courieritalic.sh.mult2.cardhatch.0-5-2.pdf
+2025-07-14 15:35:23,519 - INFO - PDF generated successfully at E:\STORE\DOCS\text\code_text\ai-assist\ai-code_cardset\CardHatch\test.plain-xlsx.courieritalic.sh.mult2.cardhatch.0-5-2.pdf
+2025-07-14 15:37:48,467 - INFO - Application closed
