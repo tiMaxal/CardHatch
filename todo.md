@@ -1,17 +1,32 @@
-- popup to create business card file
+- [done] add back and front bg color, and text color diff f\b
+- [done] swap color buttons with color indicators [put indicator swatch between description and button]
+- [done] checkbox to apply diff qty to certain cards [via column]
+- [done] enable 'business card' checkbox, to take only two cells and duplicate required amount
+- [done] have CR recognised, for formatted multi-line cells
+- [done] separate gui to sections;
+  - file paths + column names
+  - card layout
+  - font details
+  - colors
+  - [manipulators]
+- [done] checkbox to have front\back column names autofill, as read from first 2 column headers of file
+- [done] popup to create business card file
     - option to load previous file
     - 2 text input fields, for front and back 
     - field for filename 
     - save in csv format
     - [later, other formats?]
     - 'cancel' and 'save' buttons 
-
+- adjust background color[s] to have checkbox[es], to become optional [as orininally intended]
+- apply color from column
 - option to have text orientated left, central or right
+- apply a fix to ignore empty-value rows [ie, ggl-shts export-to-csv]
+- process as 'letter' size [for north american users]
 
 [ai-perplexity 20250715
 Potential Improvements]
 - Dependency Management:
-    - Consider adding a requirements.txt file for easier installation.
+    - [done]Consider adding a requirements.txt file for easier installation.
 - Font Handling:
     - If more fonts are desired in the future, consider dynamic font discovery or allowing user-supplied fonts.
 - Internationalization [i18n]:
@@ -25,7 +40,7 @@ Potential Improvements]
 - Performance:
     - For very large input files, consider streaming or chunked processing to avoid memory issues.
 - Documentation:
-    - [modify] README file with usage instructions, screenshots, and troubleshooting tips.
+    - [done] modify README file with usage instructions, screenshots, and troubleshooting tips.
 
 Summary Table: Docstring and Code Review
 Area	|Recommendation
