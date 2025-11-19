@@ -436,3 +436,395 @@
 2025-07-15 08:24:01,198 - INFO - Loaded content from E:/STORE/DOCS/text/code_text/ai-assist/ai-code_cardset/CardHatch/new_card1.csv
 2025-07-15 08:24:11,051 - INFO - Business card creation canceled
 2025-07-15 08:24:39,502 - INFO - Application closed
+2025-07-20 10:05:31,870 - INFO - Loading settings from cardhatch_settings.json
+2025-07-20 10:05:31,878 - INFO - Settings loaded successfully
+2025-07-20 10:05:31,878 - INFO - Starting Flashcard PDF Generator application
+2025-07-20 10:05:32,123 - INFO - Initializing FlashcardApp GUI
+2025-07-20 10:05:32,132 - INFO - Setting column entries state to normal
+2025-07-20 10:05:32,132 - INFO - Restored front column to 'Front', back column to 'Back'
+2025-07-20 10:05:32,340 - INFO - Column entries updated, front: 'Front', back: 'Back'
+2025-07-20 10:05:32,340 - INFO - GUI initialization complete
+2025-07-20 10:05:37,645 - INFO - Opening file dialog for input file selection
+2025-07-20 10:05:59,676 - INFO - Selected input file: E:/STORE/DOCS/text/owntxt/randirects/randirects_urban-vehicle.csv
+2025-07-20 10:05:59,976 - INFO - After file selection, front: 'Front', back: 'Back'
+2025-07-20 10:06:28,294 - INFO - Opening color picker for front background color
+2025-07-20 10:06:31,229 - INFO - Selected front background color: #ffffff
+2025-07-20 10:06:32,228 - INFO - Opening color picker for back background color
+2025-07-20 10:06:35,252 - INFO - Selected back background color: #ffffff
+2025-07-20 10:06:40,806 - INFO - Opening color picker for back text color
+2025-07-20 10:06:44,645 - INFO - Selected back text color: #400040
+2025-07-20 10:06:46,742 - INFO - Opening color picker for back text color
+2025-07-20 10:07:01,765 - INFO - Selected back text color: #000000
+2025-07-20 10:07:30,403 - INFO - Setting column entries state to disabled
+2025-07-20 10:07:30,403 - INFO - Attempting to autofill column names from E:/STORE/DOCS/text/owntxt/randirects/randirects_urban-vehicle.csv
+2025-07-20 10:07:30,412 - INFO - Sanitized headers: ['simple', 'descript', 'generic 6', 'left 19', 'right 19', 'towards 25', '[null] 0', 'qty', 'rural 40', 'urban 46', 'vehicle 58', 'walk 44', 'r+v = 38', 'r+w = 22', 'u+v = 39', 'r+v = 38.1']
+2025-07-20 10:07:30,412 - INFO - Set front column to 'simple'
+2025-07-20 10:07:30,412 - INFO - Set back column to 'descript'
+2025-07-20 10:07:30,413 - INFO - Autofill completed, front: 'simple', back: 'descript'
+2025-07-20 10:07:30,413 - INFO - Column entries updated, front: 'simple', back: 'descript'
+2025-07-20 10:07:54,362 - INFO - Opening color picker for front top bar
+2025-07-20 10:08:14,568 - INFO - Selected front top bar color: #800040
+2025-07-20 10:08:15,550 - INFO - Opening color picker for front bottom bar
+2025-07-20 10:08:31,420 - INFO - Selected front bottom bar color: #595959
+2025-07-20 10:08:41,957 - INFO - Opening color picker for front top bar
+2025-07-20 10:08:47,709 - INFO - Selected front top bar color: #804000
+2025-07-20 10:09:15,080 - INFO - Starting PDF generation process
+2025-07-20 10:09:15,081 - INFO - Settings saved to cardhatch_settings.json
+2025-07-20 10:09:15,081 - INFO - Reading input file: E:/STORE/DOCS/text/owntxt/randirects/randirects_urban-vehicle.csv
+2025-07-20 10:09:15,084 - INFO - Read 39 rows with 16 columns
+2025-07-20 10:09:21,655 - INFO - Starting PDF generation
+2025-07-20 10:09:21,659 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,659 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,659 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,659 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,660 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,660 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,661 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,661 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,662 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,662 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,662 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,663 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,663 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,664 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,664 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,719 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,719 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,720 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,720 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,720 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,721 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,721 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,721 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,721 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,721 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,721 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,722 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,723 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,723 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,723 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,723 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,724 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,725 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,725 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,725 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,725 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,725 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,726 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,726 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,726 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,727 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,728 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,728 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,728 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,728 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,729 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,730 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:21,730 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:37,634 - INFO - Starting PDF generation process
+2025-07-20 10:09:37,635 - INFO - Settings saved to cardhatch_settings.json
+2025-07-20 10:09:37,635 - INFO - Reading input file: E:/STORE/DOCS/text/owntxt/randirects/randirects_urban-vehicle.csv
+2025-07-20 10:09:37,636 - INFO - Read 39 rows with 16 columns
+2025-07-20 10:09:38,712 - INFO - Starting PDF generation
+2025-07-20 10:09:38,713 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,714 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,714 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,714 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,715 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,715 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,716 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,716 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,717 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,717 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,717 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,717 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,718 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,719 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,720 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,720 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,720 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,721 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,721 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,722 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,722 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,722 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,722 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,722 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,723 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,723 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,723 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,724 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,724 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,725 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,725 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,725 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,726 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,727 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,727 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,727 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,727 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,728 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,728 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,728 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,729 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,730 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,730 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,730 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,730 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,731 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,732 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:38,732 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:51,325 - INFO - Starting PDF generation process
+2025-07-20 10:09:51,325 - INFO - Settings saved to cardhatch_settings.json
+2025-07-20 10:09:51,326 - INFO - Reading input file: E:/STORE/DOCS/text/owntxt/randirects/randirects_urban-vehicle.csv
+2025-07-20 10:09:51,327 - INFO - Read 39 rows with 16 columns
+2025-07-20 10:09:52,397 - INFO - Starting PDF generation
+2025-07-20 10:09:52,399 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,399 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,399 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,399 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,400 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,400 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,401 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,401 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,402 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,402 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,402 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,403 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,403 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,404 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,404 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,404 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,405 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,406 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,406 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,406 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,406 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,406 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,407 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,407 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,407 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,407 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,408 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,409 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,409 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,409 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,409 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,410 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,411 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,411 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,411 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,412 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,412 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,412 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,412 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,413 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,414 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,414 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,415 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,415 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,415 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,416 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,416 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:09:52,417 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,080 - INFO - Starting PDF generation process
+2025-07-20 10:10:24,081 - INFO - Settings saved to cardhatch_settings.json
+2025-07-20 10:10:24,081 - INFO - Reading input file: E:/STORE/DOCS/text/owntxt/randirects/randirects_urban-vehicle.csv
+2025-07-20 10:10:24,083 - INFO - Read 39 rows with 16 columns
+2025-07-20 10:10:24,893 - INFO - Starting PDF generation
+2025-07-20 10:10:24,896 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,896 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,896 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,897 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,897 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,897 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,899 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,899 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,899 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,899 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,900 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,900 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,900 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,901 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,902 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,902 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,902 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,903 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,903 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,904 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,904 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,904 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,904 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,905 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,905 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,905 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,906 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,907 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,907 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,907 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,907 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,908 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,909 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,909 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,909 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,910 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,910 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,910 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,911 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,911 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,912 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,912 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,912 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,913 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,913 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,914 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,914 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:24,915 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:38,824 - INFO - Starting PDF generation process
+2025-07-20 10:10:38,824 - INFO - Settings saved to cardhatch_settings.json
+2025-07-20 10:10:38,824 - INFO - Reading input file: E:/STORE/DOCS/text/owntxt/randirects/randirects_urban-vehicle.csv
+2025-07-20 10:10:38,826 - INFO - Read 39 rows with 16 columns
+2025-07-20 10:10:40,088 - INFO - Starting PDF generation
+2025-07-20 10:10:40,089 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,090 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,090 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,090 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,090 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,091 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,092 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,092 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,092 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,092 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,093 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,093 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,093 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,095 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,095 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,095 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,095 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,097 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,097 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,097 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,097 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,097 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,098 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,098 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,098 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,098 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,099 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,100 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,100 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,100 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,101 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,101 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,102 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,103 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,103 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,103 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,103 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,104 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,104 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,104 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,105 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,106 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,106 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,106 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,106 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,107 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,107 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:10:40,108 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,329 - INFO - Starting PDF generation process
+2025-07-20 10:11:23,330 - INFO - Settings saved to cardhatch_settings.json
+2025-07-20 10:11:23,330 - INFO - Reading input file: E:/STORE/DOCS/text/owntxt/randirects/randirects_urban-vehicle.csv
+2025-07-20 10:11:23,332 - INFO - Read 39 rows with 16 columns
+2025-07-20 10:11:23,332 - INFO - Starting PDF generation
+2025-07-20 10:11:23,333 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,334 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,334 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,334 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,334 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,335 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,336 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,336 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,336 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,336 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,336 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,337 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,337 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,338 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,338 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,338 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,339 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,339 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,339 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,339 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,340 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,341 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:23,341 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:11:57,424 - INFO - Opening color picker for front top bar
+2025-07-20 10:12:03,957 - INFO - Selected front top bar color: #008000
+2025-07-20 10:12:05,168 - INFO - Starting PDF generation process
+2025-07-20 10:12:05,168 - INFO - Settings saved to cardhatch_settings.json
+2025-07-20 10:12:05,169 - INFO - Reading input file: E:/STORE/DOCS/text/owntxt/randirects/randirects_urban-vehicle.csv
+2025-07-20 10:12:05,170 - INFO - Read 39 rows with 16 columns
+2025-07-20 10:12:05,170 - INFO - Starting PDF generation
+2025-07-20 10:12:05,172 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,172 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,172 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,172 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,173 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,173 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,174 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,174 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,174 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,174 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,175 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,175 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,175 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,176 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,176 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,176 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,177 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,177 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,177 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,177 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,178 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,178 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:12:05,179 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:37:39,918 - INFO - Opening file dialog for input file selection
+2025-07-20 10:37:44,373 - INFO - Selected input file: E:/STORE/DOCS/text/owntxt/randirects/randirects_rural-vehicle.csv
+2025-07-20 10:37:44,374 - INFO - Attempting to autofill column names from E:/STORE/DOCS/text/owntxt/randirects/randirects_rural-vehicle.csv
+2025-07-20 10:37:44,397 - INFO - Sanitized headers: ['simple', 'descript', 'generic 6', 'left 19', 'right 19', 'towards 25', '[null] 0', 'qty', 'rural 40', 'urban 46', 'vehicle 58', 'walk 44', 'r+v = 38', 'r+w = 22', 'u+v = 39', 'r+v = 38.1']
+2025-07-20 10:37:44,397 - INFO - Set front column to 'simple'
+2025-07-20 10:37:44,397 - INFO - Set back column to 'descript'
+2025-07-20 10:37:44,402 - INFO - Autofill completed, front: 'simple', back: 'descript'
+2025-07-20 10:37:44,403 - INFO - After file selection, front: 'simple', back: 'descript'
+2025-07-20 10:37:54,290 - INFO - Opening color picker for front top bar
+2025-07-20 10:37:58,270 - INFO - Selected front top bar color: #804000
+2025-07-20 10:38:06,935 - INFO - Starting PDF generation process
+2025-07-20 10:38:06,935 - INFO - Settings saved to cardhatch_settings.json
+2025-07-20 10:38:06,936 - INFO - Reading input file: E:/STORE/DOCS/text/owntxt/randirects/randirects_rural-vehicle.csv
+2025-07-20 10:38:06,937 - INFO - Read 38 rows with 16 columns
+2025-07-20 10:38:06,937 - INFO - Starting PDF generation
+2025-07-20 10:38:06,939 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,939 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,939 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,940 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,940 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,940 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,940 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,941 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,941 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,942 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,942 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,942 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,942 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,943 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,944 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,944 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,945 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,945 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,945 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,946 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 10:38:06,947 - WARNING - No newlines detected in long text; ensure fields are quoted with literal newlines
+2025-07-20 16:16:14,263 - INFO - Application closed
